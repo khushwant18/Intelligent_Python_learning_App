@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Install Python 3 and Set Up a Local Programming Environment on Ubuntu 16.04</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16.04" class="level1">
+<h1>How To Install Python 3 and Set Up a Local Programming Environment on Ubuntu 16.04</h1>
+<p>This tutorial will get you up and running with a local Python 3 programming environment in Ubuntu 16.04.</p>
+<p>Python is a versatile programming language that can be used for many different programming projects. First published in 1991 with a name inspired by the British comedy group Monty Python, the development team wanted to make Python a language that was fun to use. Easy to set up, and written in a relatively straightforward style with immediate feedback on errors, Python is a great choice for beginners and experienced developers alike. Python 3 is the most current version of the language and is considered to be the future of Python.</p>
+<p>This tutorial will guide you through installing Python 3 on your local Linux machine and setting up a programming environment via the command line. This tutorial will explicitly cover the installation procedures for Ubuntu 16.04, but the general principles apply to any other distribution of Debian Linux.</p>
+<section id="prerequisites" class="level2">
+<h2>Prerequisites</h2>
+<p>You will need a computer with Ubuntu 16.04 installed, as well as have administrative access to that machine and an internet connection.</p>
+</section>
+<section id="step-1-setting-up-python-3" class="level2">
+<h2>Step 1 — Setting Up Python 3</h2>
+<p>We’ll be completing our installation and setup on the command line, which is a non-graphical way to interact with your computer. That is, instead of clicking on buttons, you’ll be typing in text and receiving feedback from your computer through text as well. The command line, also known as a shell, can help you modify and automate many of the tasks you do on a computer every day, and is an essential tool for software developers. There are many terminal commands to learn that can enable you to do more powerful things. The article “<a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal">An Introduction to the Linux Terminal</a>” can get you better oriented with the terminal.</p>
+<p>On Ubuntu 16.04, you can find the Terminal application by clicking on the Ubuntu icon in the upper-left hand corner of your screen and typing “terminal” into the search bar. Click on the Terminal application icon to open it. Alternatively, you can hit the <code>CTRL</code>, <code>ALT</code>, and <code>T</code> keys on your keyboard at the same time to open the Terminal application automatically.</p>
+<figure>
+<img src="../media/file0.png" alt="Ubuntu Terminal" /><figcaption>Ubuntu Terminal</figcaption>
+</figure>
+<p>Ubuntu 16.04 ships with both Python 3 and Python 2 pre-installed. To make sure that our versions are up-to-date, let’s update and upgrade the system with <code>apt-get</code>:</p>
+<figure class="code">
+<pre class="command"><code>sudo apt-get update
+sudo apt-get -y upgrade</code></pre>
+</figure>
+<p>The <code>-y</code> flag will confirm that we are agreeing for all items to be installed, but depending on your version of Linux, you may need to confirm additional prompts as your system updates and upgrades.</p>
+<p>Once the process is complete, we can check the version of Python 3 that is installed in the system by typing:</p>
+<figure class="code">
+<pre class="command"><code>python3 -V</code></pre>
+</figure>
+<p>You will receive output in the terminal window that will let you know the version number. The version number may vary, but it will look similar to this:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Python <span class="highlight">3.5.2</span></code></pre>
+</figure>
+<p>To manage software packages for Python, let’s install <strong>pip</strong>:</p>
+<figure class="code">
+<pre class="command"><code>sudo apt-get install -y python3-pip</code></pre>
+</figure>
+<p>A tool for use with Python, <strong>pip</strong> installs and manages programming packages we may want to use in our development projects. You can install Python packages by typing:</p>
+<figure class="code">
+<pre class="command"><code>pip3 install <span class="highlight">package_name</span></code></pre>
+</figure>
+<p>Here, <code><span class="highlight">package_name</span></code> can refer to any Python package or library, such as Django for web development or NumPy for scientific computing. So if you would like to install NumPy, you can do so with the command <code>pip3 install numpy</code>.</p>
+<p>There are a few more packages and development tools to install to ensure that we have a robust set-up for our programming environment:</p>
+<figure class="code">
+<pre class="command"><code>sudo apt-get install build-essential libssl-dev libffi-dev python-dev</code></pre>
+</figure>
+<p>Once Python is set up, and pip and other tools are installed, we can set up a virtual environment for our development projects.</p>
+</section>
+<section id="step-2-setting-up-a-virtual-environment" class="level2">
+<h2>Step 2 — Setting Up a Virtual Environment</h2>
+<p>Virtual environments enable you to have an isolated space on your computer for Python projects, ensuring that each of your projects can have its own set of dependencies that won’t disrupt any of your other projects.</p>
+<p>Setting up a programming environment provides us with greater control over our Python projects and over how different versions of packages are handled. This is especially important when working with third-party packages.</p>
+<p>You can set up as many Python programming environments as you want. Each environment is basically a directory or folder in your computer that has a few scripts in it to make it act as an environment.</p>
+<p>We need to first install the <strong>venv</strong> module, part of the standard Python 3 library, so that we can create virtual environments. Let’s install venv by typing:</p>
+<figure class="code">
+<pre class="command"><code>sudo apt-get install -y python3-venv</code></pre>
+</figure>
+<p>With this installed, we are ready to create environments. Let’s choose which directory we would like to put our Python programming environments in, or we can create a new directory with <code>mkdir</code>, as in:</p>
+<figure class="code">
+<pre class="command"><code>mkdir <span class="highlight">environments</span>
+cd <span class="highlight">environments</span></code></pre>
+</figure>
+<p>Once you are in the directory where you would like the environments to live, you can create an environment by running the following command:</p>
+<figure class="code">
+<pre class="command"><code>python3 -m venv <span class="highlight">my_env</span></code></pre>
+</figure>
+<p>Essentially, this sets up a new directory that contains a few items which we can view with the <code>ls</code> command:</p>
+<figure class="code">
+<pre class="command"><code>ls my_env</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>bin include lib lib64 pyvenv.cfg share</code></pre>
+</figure>
+<p>Together, these files work to make sure that your projects are isolated from the broader context of your local machine, so that system files and project files don’t mix. This is good practice for version control and to ensure that each of your projects has access to the particular packages that it needs. Python Wheels, a built-package format for Python that can speed up your software production by reducing the number of times you need to compile, will be in the Ubuntu 16.04 <code>share</code> directory.</p>
+<p>To use this environment, you need to activate it, which you can do by typing the following command that calls the activate script:</p>
+<figure class="code">
+<pre class="command"><code>source <span class="highlight">my_env</span>/bin/activate</code></pre>
+</figure>
+<p>Your prompt will now be prefixed with the name of your environment, in this case it is called <span class="highlight">my_env</span>. Your prefix may look somewhat different, but the name of your environment in parentheses should be the first thing you see on your line:</p>
+<figure class="code">
+<pre><code>(my_env) sammy@sammy:~/environments$</code></pre>
+</figure>
+<p>This prefix lets us know that the environment <span class="highlight">my_env</span> is currently active, meaning that when we create programs here they will use only this particular environment’s settings and packages.</p>
+<div class="note">
+<p><strong>Note:</strong> Within the virtual environment, you can use the command <code>python</code> instead of <code>python3</code>, and <code>pip</code> instead of <code>pip3</code> if you would prefer. If you use Python 3 on your machine outside of an environment, you will need to use the <code>python3</code> and <code>pip3</code> commands exclusively.</p>
+</div>
+<p>After following these steps, your virtual environment is ready to use.</p>
+</section>
+<section id="step-3-creating-a-simple-program" class="level2">
+<h2>Step 3 — Creating a Simple Program</h2>
+<p>Now that we have our virtual environment set up, let’s create a simple “Hello, World!” program. This will make sure that our environment is working and gives us the opportunity to become more familiar with Python if we aren’t already.</p>
+<p>To do this, we’ll open up a command-line text editor such as nano and create a new file:</p>
+<figure class="code">
+<pre><code>(my_env) sammy@sammy:~/environments$ nano hello.py</code></pre>
+</figure>
+<p>Once the text file opens up in the terminal window we’ll type out our program:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Hello, World!&quot;)</code></pre>
+</figure>
+<p>Exit nano by typing the <code>control</code> and <code>x</code> keys, and when prompted to save the file press <code>y</code>.</p>
+<p>Once you exit out of nano and return to your shell, let’s run the program:</p>
+<figure class="code">
+<pre><code>(my_env) sammy@sammy:~/environments$python hello.py</code></pre>
+</figure>
+<p>The hello.py program that you just created should cause your terminal to produce the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Hello, World!</code></pre>
+</figure>
+<p>To leave the environment, simply type the command <code>deactivate</code> and you will return to your original directory.</p>
+</section>
+<section id="conclusion-1" class="level2">
+<h2>Conclusion</h2>
+<p>Congratulations! At this point you have a Python 3 programming environment set up on your local Ubuntu machine and can begin a coding project!</p>
+<p>To set up Python 3 on another computer, follow the <a href="https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3">local programming environment guides</a> for <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-debian-8">Debian 8</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-centos-7">CentOS 7</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-windows-10">Windows 10</a>, or <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-mac-os-x">macOS</a>. You can also read about <a href="ch007.xhtml">installing Python and setting up a programming environment on an Ubuntu 16.04 server</a>, which is especially useful when working on development teams.</p>
+<p>With your local machine ready for software development, you can continue to learn more about coding in Python by following “<a href="ch011.xhtml">Understanding Data Types in Python 3</a>” and “<a href="ch017.xhtml">How To Use Variables in Python 3</a>”.</p>
+</section>
+</section>
+</body>
+</html>
+

@@ -1,0 +1,178 @@
+<C1@CWidget>:
+    TextInput:
+        text: root.bc
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C2@CWidget>:
+    TextInput:
+        text: root.bc1
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C3@CWidget>:
+    TextInput:
+        text: root.bc2
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C4@CWidget>:
+    TextInput:
+        text: root.bc3
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C5@CWidget>:
+    TextInput:
+        text: root.bc4
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C6@CWidget>:
+    TextInput:
+        text: root.bc5
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C7@CWidget>:
+    TextInput:
+        text: root.bc6
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C8@CWidget>:
+    TextInput:
+        text: root.bc7
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C9@CWidget>:
+    TextInput:
+        text: root.bc8
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C10@CWidget>:
+    TextInput:
+        text: root.bc9
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C11@CWidget>:
+    TextInput:
+        text: root.bc10
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C12@CWidget>:
+    TextInput:
+        text: root.bc11
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C13@CWidget>:
+    TextInput:
+        text: root.bc12
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C14@CWidget>:
+    TextInput:
+        text: root.bc13
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C15@CWidget>:
+    TextInput:
+        text: root.bc14
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C16@CWidget>:
+    TextInput:
+        text: root.bc15
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C17@CWidget>:
+    TextInput:
+        text: root.bc16
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C18@CWidget>:
+    TextInput:
+        text: root.bc17
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C19@CWidget>:
+    TextInput:
+        text: root.bc18
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C20@CWidget>:
+    TextInput:
+        text: root.bc19
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<C21@CWidget>:
+    TextInput:
+        text: root.bc20
+        size_hint: (1, None)
+        height: '2000'
+        multiline: 'true'
+<BookScreen>:
+    BoxLayout:
+        orientation:"vertical"
+        padding: 20
+        spacing: 10
+        PageLayout:
+            id: chapters
+            C1:
+            C2:
+            C3:
+            C4:
+            C5:
+            C6:
+            C7:
+            C8:
+            C9:
+            C10:
+            C11:
+            C12:
+            C13:
+            C14:
+            C15:
+            C16:
+            C17:
+            C18:
+            C19:
+            C20:
+            C21:
+        BoxLayout:
+            size_hint_y:None
+            # height:"40dp"
+            padding: 20
+            BoxLayout:
+                size_hint_y:None
+                height:"40dp"
+                spacing:10          
+                Button:
+                    text:
+                        "<"
+                    on_release:
+                        app.change_screen("select_screen")
+                # Button:
+                #     text:
+                #         "Settings"
+                #     on_release:
+                #         app.change_screen("settings_screen")
+                Button:
+                    text:
+                        ">"
+                    on_release: 
+                        app.change_screen("ques_screen")
+                

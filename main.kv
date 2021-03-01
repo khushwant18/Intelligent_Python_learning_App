@@ -1,0 +1,29 @@
+#:include kv/homescreen.kv
+#:include kv/settingsscreen.kv
+#:include kv/bookscreen.kv
+#:include kv/selectscreen.kv
+#:include kv/quesscreen.kv
+#:include kv/ansscreen.kv
+
+GridLayout:
+    cols: 1
+    ScreenManager:
+        id: screen_manager
+        HomeScreen:
+            name:"home_screen"
+            id: home_screen
+        SettingsScreen:
+            name:"settings_screen"
+            id: settings_screen
+        SelectScreen:
+            name:"select_screen"
+            id: Select_screen
+        BookScreen:
+            name:"book_screen"
+            id: book_screen
+        QuesScreen:
+            name:"ques_screen"
+            id: ques_screen
+        AnsScreen:
+            name:"ans_screen"
+            id: ans_screen

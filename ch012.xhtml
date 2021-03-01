@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>An Introduction to Working with Strings</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="an-introduction-to-working-with-strings" class="level1">
+<h1>An Introduction to Working with Strings</h1>
+<p>A <strong>string</strong> is a sequence of one or more characters (letters, numbers, symbols) that can be either a constant or a variable. Made up of Unicode, strings are immutable sequences, meaning they are unchanging.</p>
+<p>Because text is such a common form of data that we use in everyday life, the string data type is a very important building block of programming.</p>
+<p>This Python tutorial will go over how to create and print strings, how to concatenate and replicate strings, and how to store strings in variables.</p>
+<section id="creating-and-printing-strings" class="level2">
+<h2>Creating and Printing Strings</h2>
+<p>Strings exist within either single quotes <code>'</code> or double quotes <code>&quot;</code> in Python, so to create a string, enclose a sequence of characters in one or the other:</p>
+<figure class="code">
+<pre class="python"><code>&#39;This is a string in single quotes.&#39;</code></pre>
+</figure>
+<figure class="code">
+<pre class="python"><code>&quot;This is a string in double quotes.&quot;</code></pre>
+</figure>
+<p>You can choose to use either single quotes or double quotes, but whichever you decide on you should be consistent within a program.</p>
+<p>We can print out strings by simply calling the <code>print()</code> function:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Let&#39;s print out this string.&quot;)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Let&#39;s print out this string.</code></pre>
+</figure>
+<p>With an understanding of how strings are formatted in Python, let’s take a look at how we can work with and manipulate strings in programs.</p>
+</section>
+<section id="string-concatenation" class="level2">
+<h2>String Concatenation</h2>
+<p>Concatenation means joining strings together end-to-end to create a new string. To concatenate strings, we use the <code>+</code> operator. Keep in mind that when we work with <a href="ch019.xhtml#addition-and-subtraction">numbers, <code>+</code> will be an operator for addition</a>, but when used with strings it is a joining operator.</p>
+<p>Let’s combine the strings <code>&quot;Sammy&quot;</code> and <code>&quot;Shark&quot;</code> together with concatenation through a <code>print()</code> statement:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy&quot; + &quot;Shark&quot;)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>SammyShark</code></pre>
+</figure>
+<p>If we would like a whitespace between the two strings, we can simply include the whitespace within a string, like after the word “Sammy”:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy &quot; + &quot;Shark&quot;)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy Shark</code></pre>
+</figure>
+<p>Be sure not to use the <code>+</code> operator between two different data types. We can’t concatenate strings and integers together, for instance. So, if we try to write:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy&quot; + 27)</code></pre>
+</figure>
+<p>We will receive the following error:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>TypeError: Can&#39;t convert &#39;int&#39; object to str implicitly</code></pre>
+</figure>
+<p>If we wanted to create the string <code>&quot;Sammy27&quot;</code>, we could do so by putting the number <code>27</code> in quotes (<code>&quot;27&quot;</code>) so that it is no longer an integer but is instead a string. <a href="ch016.xhtml#converting-with-strings">Converting numbers to strings</a> for concatenation can be useful when dealing with zip codes or phone numbers, for example, as we don’t want to perform addition between a country code and an area code, but we do want them to stay together.</p>
+<p>When we combine two or more strings through concatenation we are creating a new string that we can use throughout our program.</p>
+</section>
+<section id="string-replication" class="level2">
+<h2>String Replication</h2>
+<p>There may be times when you need to use Python to automate tasks, and one way you may do this is through repeating a string several times. You can do so with the <code>*</code> operator. Like the <code>+</code> operator, <a href="ch019.xhtml#multiplication-and-division">the <code>*</code> operator has a different use when used with numbers</a>, where it is the operator for multiplication. When used with one string and one integer, <code>*</code> is the <strong>string replication operator</strong>, repeating a single string however many times you would like through the integer you provide.</p>
+<p>Let’s print out “Sammy” 9 times without typing out “Sammy” 9 times with the <code>*</code> operator:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy&quot; * 9)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>SammySammySammySammySammySammySammySammySammy</code></pre>
+</figure>
+<p>With string replication, we can repeat the single string value the amount of times equivalent to the integer value.</p>
+</section>
+<section id="storing-strings-in-variables" class="level2">
+<h2>Storing Strings in Variables</h2>
+<p><strong><a href="ch017.xhtml">Variables</a></strong> are symbols that you can use to store data in a program. You can think of them as an empty box that you fill with some data or value. Strings are data, so we can use them to fill up a variable. Declaring strings as variables can make it easier for us to work with strings throughout our Python programs.</p>
+<p>To store a string inside a variable, we simply need to assign a variable to a string. In this case let’s declare <code>my_str</code> as our variable:</p>
+<figure class="code">
+<pre class="python"><code>my_str = &quot;Sammy likes declaring strings.&quot;</code></pre>
+</figure>
+<p>Now that we have the variable <code>my_str</code> set to that particular string, we can print the variable like so:</p>
+<figure class="code">
+<pre class="python"><code>print(my_str)</code></pre>
+</figure>
+<p>And we will receive the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy likes declaring strings.</code></pre>
+</figure>
+<p>By using variables to stand in for strings, we do not have to retype a string each time we want to use it, making it simpler for us to work with and manipulate strings within our programs.</p>
+</section>
+<section id="conclusion-10" class="level2">
+<h2>Conclusion</h2>
+<p>This tutorial went over the basics of working with the string data type in the Python 3 programming language. Creating and printing strings, concatenating and replicating strings, and storing strings in variables will provide you with the fundamentals to use strings in your Python 3 programs.</p>
+<p>Continue learning more about strings by taking a look at the following tutorials: - <a href="ch013.xhtml">How To Format Text in Python 3</a> - <a href="ch014.xhtml">An Introduction to String Functions</a> - <a href="ch015.xhtml">How To Index and Slice Strings</a> - <a href="ch017.xhtml">How To Use String Formatters</a></p>
+</section>
+</section>
+</body>
+</html>
+

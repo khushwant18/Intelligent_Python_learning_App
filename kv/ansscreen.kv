@@ -1,0 +1,46 @@
+<Am@AWidget>:
+    TextInput:
+        text: root.an
+        size_hint: (1, None)
+        height: '1000'
+        multiline: 'true'
+# <Mx@MyWidget>:
+#     TextInput:
+#         text: root.bc1
+#         size_hint: (1, None)
+#         height: '1000'
+#         multiline: 'true'
+      
+<AnsScreen>:
+    BoxLayout:
+        orientation:"vertical"
+        padding: 20
+        spacing: 10
+        PageLayout:
+            id: Question
+            Am:
+
+        BoxLayout:
+            size_hint_y:None
+            # height:"40dp"
+            padding: 20
+            BoxLayout:
+                size_hint_y:None
+                height:"40dp"
+                spacing:10          
+                Button:
+                    text:
+                        "<"
+                    on_release:
+                        app.change_screen("ques_screen")
+                # Button:
+                #     text:
+                #         "Settings"
+                #     on_release:
+                #         app.change_screen("settings_screen")
+#                 Button:
+#                     text:
+#                         ">"
+#                     on_release: 
+#                         app.change_screen("ques_screen")
+                

@@ -1,0 +1,146 @@
+<Q1@QWidget>:
+    TextInput:
+        text: root.qo
+        size_hint: (1, None)
+        height: '1000'
+        multiline: 'true'
+<T1@TWidget>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    CheckBox:
+        group: 'check'
+        id : Q1A
+        on_active: root.insert_data1('A')
+    CheckBox:
+        group: 'check'
+        id : Q1B
+        on_active: root.insert_data1('B')
+    CheckBox:
+        group: 'check'
+        id : Q1C
+        on_active: root.insert_data1('C')
+    CheckBox:
+        group: 'check'
+        id : Q1D
+        on_active: root.insert_data1('D')
+<T2@TWidget>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    CheckBox:
+        group: 'check2'
+        id : Q2A
+        on_active: root.insert_data2('A')
+    CheckBox:
+        group: 'check2'
+        id : Q2B
+        on_active: root.insert_data2('B')
+    CheckBox:
+        group: 'check2'
+        id : Q2C
+        on_active: root.insert_data2('C')
+    CheckBox:
+        group: 'check2'
+        id : Q2D
+        on_active: root.insert_data2('D')
+<T3@TWidget>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    CheckBox:
+        group: 'check3'
+        id : Q3A
+        on_active: root.insert_data3('A')
+    CheckBox:
+        group: 'check3'
+        id : Q3B
+        on_active: root.insert_data3('B')
+    CheckBox:
+        group: 'check3'
+        id : Q3C
+        on_active: root.insert_data3('C')
+    CheckBox:
+        group: 'check3'
+        id : Q3D
+        on_active: root.insert_data3('D')
+<T4@TWidget>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    CheckBox:
+        group: 'check4'
+        id : Q4A
+        on_active: root.insert_data4('A')
+    CheckBox:
+        group: 'check4'
+        id : Q4B
+        on_active: root.insert_data4('B')
+    CheckBox:
+        group: 'check4'
+        id : Q4C
+        on_active: root.insert_data4('C')
+    CheckBox:
+        group: 'check4'
+        id : Q4D
+        on_active: root.insert_data4('D')
+<QuesScreen>:
+    BoxLayout:
+        orientation:"vertical"
+        padding: 20
+        spacing: 10
+        BoxLayout:
+            id: Question
+            Q1:
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                    text:'Q1'
+                    color: 0,0,0,1
+                T1:
+                Label:
+                    text:'Q2'
+                    color: 0,0,0,1
+                T2:
+                Label:
+                    text:'Q3'
+                    color: 0,0,0,1
+                T3:
+                Label:
+                    text:'Q4'
+                    color: 0,0,0,1
+                T4:
+        BoxLayout:
+            size_hint_y:None
+            # height:"40dp"
+            padding: 20
+            BoxLayout:
+                size_hint_y:None
+                height:"40dp"
+                spacing:10          
+                Button:
+                    text:
+                        "<"
+                    on_release:
+                        app.change_screen("select_screen")
+                Button:
+                    text:
+                        "Submit"
+                    on_press: root.evaluate()
+                Button:
+                    text:
+                        "Explanantions>"
+                    on_release: 
+                        app.change_screen("ans_screen")

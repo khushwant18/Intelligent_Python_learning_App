@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Use Variables</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-use-variables" class="level1">
+<h1>How To Use Variables</h1>
+<p><strong>Variables</strong> are an important programming concept to master. They are essentially symbols that stand in for a value you’re using in a program.</p>
+<p>This tutorial will cover some variable basics and how to best use them within the Python 3 programs you create.</p>
+<section id="understanding-variables" class="level2">
+<h2>Understanding Variables</h2>
+<p>In technical terms, a variable is assigning a storage location to a value that is tied to a symbolic name or identifier. The variable name is used to reference that stored value within a computer program.</p>
+<p>You can think of a variable as a label that has a name on it, which you tie onto a value:</p>
+<figure>
+<img src="../media/file3.png" alt="Variables in Python" /><figcaption>Variables in Python</figcaption>
+</figure>
+<p>Let’s say we have an integer, <code>103204934813</code>, and we want to store it in a variable rather than continuously retype the long number over and over again. Instead, let’s use something that’s easy to remember like the variable <code>my_int</code>:</p>
+<figure class="code">
+<pre class="python"><code>my_int = 103204934813</code></pre>
+</figure>
+<p>If we think of it like a label that is tied to the value, it will look something like this:</p>
+<figure>
+<img src="../media/file4.png" alt="Python Variable Example" /><figcaption>Python Variable Example</figcaption>
+</figure>
+<p>The label has the variable name <code>my_int</code> written on it, and is tied to the integer value <code>103204934813</code>.</p>
+<p>The phrase <code>my_int = 103204934813</code> is an <strong>assignment statement</strong>, which consists of a few parts:</p>
+<ul>
+<li>the variable name (<code>my_int</code>)</li>
+<li>the <strong>assignment operator</strong>, also known as the equal sign (<code>=</code>)</li>
+<li>the value that is being tied to the variable name (<code>103204934813</code>)</li>
+</ul>
+<p>Together, those three parts make up the statement that sets the variable <code>my_int</code> equal to the value of the integer <code>103204934813</code>.</p>
+<p>As soon as we set a variable equal to a value, we <strong>initialize</strong> or create that variable. Once we have done that, we are set to use the variable instead of the value. In Python, variables do not need explicit declaration prior to use like some programming languages; you can start using the variable right away.</p>
+<p>As soon as we set <code>my_int</code> equal to the value of <code>103204934813</code>, we can use <code>my_int</code> in the place of the integer, so let’s print it out:</p>
+<figure class="code">
+<pre class="python"><code>print(my_int)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>103204934813</code></pre>
+</figure>
+<p>Using variables, we can quickly and easily do <a href="ch019.xhtml">math</a>. With <code>my_int = 1040</code>, let’s subtract the integer value 813:</p>
+<figure class="code">
+<pre class="python"><code>print(my_int - 813)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>103204934000</code></pre>
+</figure>
+<p>In this example, Python does the math for us, subtracting 813 from the variable <code>my_int</code> to return the sum <code>103204934000</code>.</p>
+<p>Speaking of math, variables can be set equal to the result of a math equation. Let’s add two numbers together and store the value of the sum into the variable <code>x</code>:</p>
+<figure class="code">
+<pre class="python"><code>x = 76 + 145</code></pre>
+</figure>
+<p>The above example may look like something you’re already familiar with: algebra. In algebra, letters and other symbols are used to represent numbers and quantities within formulas and equations, just like how variables are symbolic names that represent the value of a data type. For correct Python syntax, you’ll need to make sure that your variable is on the left side of any equations.</p>
+<p>Let’s go ahead and print <code>x</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(x)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>221</code></pre>
+</figure>
+<p>Python returned the value <code>221</code> because the variable <code>x</code> was set equal to the sum of <code>76</code> and <code>145</code>.</p>
+<p>Variables can represent any data type, not just integers:</p>
+<figure class="code">
+<pre class="python"><code>my_string = &#39;Hello, World!&#39;
+my_flt = 45.06
+my_bool = 5 &gt; 9 #A Boolean value will return either True or False
+my_list = [&#39;item_1&#39;, &#39;item_2&#39;, &#39;item_3&#39;, &#39;item_4&#39;]
+my_tuple = (&#39;one&#39;, &#39;two&#39;, &#39;three&#39;)
+my_dict = {&#39;letter&#39;: &#39;g&#39;, &#39;number&#39;: &#39;seven&#39;, &#39;symbol&#39;: &#39;&amp;&#39;}</code></pre>
+</figure>
+<p>If you print any of the above variables, Python will return what that variable is equivalent to. For example, let’s work with the assignment statement for the <a href="ch022.xhtml">list data type</a> above:</p>
+<figure class="code">
+<pre class="python"><code>my_list = [&#39;item_1&#39;, &#39;item_2&#39;, &#39;item_3&#39;, &#39;item_4&#39;]
+print(my_list)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>[&#39;item_1&#39;, &#39;item_2&#39;, &#39;item_3&#39;, &#39;item_4&#39;]</code></pre>
+</figure>
+<p>We passed the list value of <code>['item_1', 'item_2', 'item_3', 'item_4']</code> to the variable <code>my_list</code>, and then used the <code>print()</code> function to print out that value by calling <code>my_list</code>.</p>
+<p>Variables work by carving out a little area of memory within your computer which accepts specified values that are then associated with that space.</p>
+</section>
+<section id="naming-variables-rules-and-style" class="level2">
+<h2>Naming Variables: Rules and Style</h2>
+<p>The naming of variables is quite flexible, but there are some rules you need to keep in mind:</p>
+<ul>
+<li>Variable names must only be one word (as in no spaces)</li>
+<li>Variable names must be made up of only letters, numbers, and underscore (<code>_</code>)</li>
+<li>Variable names cannot begin with a number</li>
+</ul>
+<p>Following the rules above, let’s look at both valid and invalid variable names:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Valid</th>
+<th>Invalid</th>
+<th>Why Invalid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>my_int</td>
+<td>my-int</td>
+<td>Hyphens are not permitted</td>
+</tr>
+<tr class="even">
+<td>int4</td>
+<td>4int</td>
+<td>Cannot begin with a number</td>
+</tr>
+<tr class="odd">
+<td>MY_INT</td>
+<td>$MY_INT</td>
+<td>Cannot use symbols other than <code>_</code></td>
+</tr>
+<tr class="even">
+<td>another_int</td>
+<td>another int</td>
+<td>Cannot be more than one word</td>
+</tr>
+</tbody>
+</table>
+<p>Something else to keep in mind when naming variables, is that they are case-sensitive, meaning that <code>my_int</code>, <code>MY_INT</code>, <code>My_Int</code>, and <code>mY_iNt</code> are all completely different variables. You should avoid using similar variable names within a program to ensure that both you and your current and future collaborators can keep your variables straight.</p>
+<p>Finally, some notes about style. Conventionally speaking, when naming variables it is customary to begin them with a lower-case letter and to use underscores when separating words. Beginning with an upper-case letter is not invalid, and some people may prefer camelCase or mixed upper- and lower-case letters when writing their variables, but these are less conventional choices.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Conventional Style</th>
+<th>Unconventional Style</th>
+<th>Why Unconventional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>my_int</td>
+<td>myInt</td>
+<td>camelCase not conventional</td>
+</tr>
+<tr class="even">
+<td>int4</td>
+<td>Int4</td>
+<td>Upper-case first letter not conventional</td>
+</tr>
+<tr class="odd">
+<td>my_first_string</td>
+<td>myFirstString</td>
+<td>camelCase not conventional</td>
+</tr>
+</tbody>
+</table>
+<p>The most important style choice you can make is to be consistent. If you begin working on an existing project that has been using camelCase for its variable names, then it is best to continue using the existing style.</p>
+<p><a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> is the official Python code style guide and it addresses many of the stylistic questions you may have about Python. In general, readability and consistency are favored over other stylistic concerns.</p>
+</section>
+<section id="reassigning-variables" class="level2">
+<h2>Reassigning Variables</h2>
+<p>As the word <strong>variable</strong> implies, Python variables can be readily changed. This means that you can connect a different value with a previously assigned variable very easily through simple reassignment.</p>
+<p>Being able to reassign is useful because throughout the course of a program, you may need to accept user-generated values into already initialized variables, or may have to change the assignment to something you previously defined.</p>
+<p>Knowing that you can readily and easily reassign a variable can also be useful in situations where you may be working on a large program that was begun by someone else and you are not clear yet on what has already been defined.</p>
+<p>Let’s assign <code>x</code> first as an integer, and then reassign it as a <a href="https://www.digitalocean.com/community/tutorial_series/working-with-strings-in-python-3">string</a>:</p>
+<figure class="code">
+<pre class="python"><code>#Assign x to be an integer
+x = 76
+print(x)
+
+#Reassign x to be a string
+x = &quot;Sammy&quot;
+print(x)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>76
+Sammy</code></pre>
+</figure>
+<p>The example above shows that we can first assign the variable <code>x</code> and assign it with the value of an integer, and then reassign the variable <code>x</code> assigning it this time with the value of a string.</p>
+<p>If we rewrote the program this way:</p>
+<figure class="code">
+<pre class="python"><code>x = 76
+x = &quot;Sammy&quot;
+print(x)</code></pre>
+</figure>
+<p>We would only receive the second assigned value as the output since that was the most recent assignment:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy</code></pre>
+</figure>
+<p>Reassigning variables can be useful in some cases, but you will want to be aware of the readability of your code and work to make your program as clear as possible.</p>
+</section>
+<section id="multiple-assignment" class="level2">
+<h2>Multiple Assignment</h2>
+<p>With Python, you can assign one single value to several variables at the same time. This lets you initialize several variables at once, which you can reassign later in the program yourself, or through user input.</p>
+<p>Through multiple assignment, you can set the variables <code>x</code>, <code>y</code>, and <code>z</code> to the value of the integer <code>0</code>:</p>
+<figure class="code">
+<pre class="python"><code>x = y = z = 0
+print(x)
+print(y)
+print(z)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>0
+0
+0</code></pre>
+</figure>
+<p>In this example, all three of the variables (<code>x</code>, <code>y</code>, and <code>z</code>) are assigned to the same memory location. They are each equal to the value of 0.</p>
+<p>Python also allows you to assign several values to several variables within the same line. Each of these values can be of a different data type:</p>
+<figure class="code">
+<pre class="python"><code>j, k, l = &quot;shark&quot;, 2.05, 15
+print(j)
+print(k)
+print(l)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>shark
+2.05
+15</code></pre>
+</figure>
+<p>In the example above, the variable <code>j</code> was assigned to the string <code>&quot;shark&quot;</code>, the variable <code>k</code> was assigned to the float <code>2.05</code>, and the variable <code>l</code> was assigned to the integer <code>15</code>.</p>
+<p>This approach to assigning multiple variables to multiple values in one line can keep your lines of code down, but make sure you are not compromising readability for fewer lines of code.</p>
+</section>
+<section id="global-and-local-variables" class="level2">
+<h2>Global and Local Variables</h2>
+<p>When using variables within a program, it is important to keep <strong>variable scope</strong> in mind. A variable’s scope refers to the particular places it is accessible within the code of a given program. This is to say that not all variables are accessible from all parts of a given program — some variables will be global and some will be local.</p>
+<p><strong>Global variables</strong> exist outside of <a href="ch033.xhtml">functions</a>. <strong>Local variables</strong> exist within functions.</p>
+<p>Let’s take a look at global and local variables in action:</p>
+<figure class="code">
+<pre class="python"><code>#Create a global variable, outside of a function
+glb_var = &quot;global&quot;
+
+#Define a function
+def var_function():
+    lcl_var = &quot;local&quot; #Create a local variable, inside function
+    print(lcl_var)
+
+#Call function to print local variable
+var_function()
+
+#Print global variable outside function
+print(glb_var)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>local
+global</code></pre>
+</figure>
+<p>The above program assigns the global variable <code>glb_var</code> outside of any function, then defines the function <code>var_function()</code>. Inside of the function a local variable called <code>lcl_var</code> is assigned and then printed out. The program ends by calling the <code>var_function()</code> and then printing the <code>glb_var</code>.</p>
+<p>Because <code>glb_var</code> is a global variable, we can refer to it in <code>var_function()</code>. Let’s modify the small program above to do that:</p>
+<figure class="code">
+<pre class="python"><code>glb_var = &quot;global&quot;
+
+def var_function():
+    lcl_var = &quot;local&quot;
+    print(lcl_var)
+    print(glb_var) #Print glb_var within function
+
+var_function()
+print(glb_var)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>local
+global
+global</code></pre>
+</figure>
+<p>We now have the global variable <code>glb_var</code> printed out twice, because it is printed both by the function and outside of the function.</p>
+<p>What if we try to call the local variable outside of the function?</p>
+<figure class="code">
+<pre class="python"><code>glb_var = &quot;global&quot;
+
+def var_function():
+    lcl_var = &quot;local&quot;
+    print(lcl_var)
+
+print(lcl_var)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>NameError: name &#39;lcl_var&#39; is not defined</code></pre>
+</figure>
+<p>We cannot use a local variable outside of the function it is assigned in. If we try to do so, we’ll receive a <code>NameError</code> in return.</p>
+<p>Let’s look at another example where we use the same variable name for a global variable and a local variable:</p>
+<figure class="code">
+<pre class="python"><code>num1 = 5 #Global variable
+
+def my_function():
+    num1 = 10 #Use the same variable name num1
+    num2 = 7 #Assign local variable
+
+    print(num1) #Print local variable num1
+    print(num2) #Print local variable num2
+
+#Call my_function()
+my_function()
+
+#Print global variable num1
+print(num1)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>10
+7
+5</code></pre>
+</figure>
+<p>Because the local variable of <code>num1</code> is assigned locally within a function, when we call that function we see <code>num1</code> as equal to the local value of <code>10</code>. When we print out the global value of <code>num1</code> after calling <code>my_function()</code>, we see that the global variable <code>num1</code> is still equal to the value of <code>5</code>.</p>
+<p>It is possible to assign global variables within a function by using Python’s <code>global</code> statement:</p>
+<figure class="code">
+<pre class="python"><code>def new_shark():
+    #Assign variable as global
+    global shark
+    shark = &quot;Sammy&quot;
+
+#Call new_shark() function
+new_shark()
+
+#Print global variable shark
+print(shark)</code></pre>
+</figure>
+<p>Even though the variable <code>shark</code> was assigned locally within the <code>new_shark()</code> function, it is accessible outside of the function because of the <code>global</code> statement used before the assignment of the variable within the function. Due to that <code>global</code> statement, when we call <code>print(shark)</code> outside of the function we don’t receive an error. Though you <em>can</em> assign a global variable within a function, you likely will not need to do this often, and should err on the side of readable code.</p>
+<p>Something else to keep in mind is that if you reference a variable within a function, without also assigning it a value, that variable is implicitly global. In order to have a local variable, you must assign a value to it within the body of the function.</p>
+<p>When working with variables, it is important to decide whether it is more appropriate to use a global or local variable. Usually it is best to keep variables local, but when you are using the same variable throughout several functions, you may want to initialize a global variable. If you are working with the variable only within one function or one <a href="ch035.xhtml">class</a>, you’ll probably want to use a local variable instead.</p>
+</section>
+<section id="conclusion-15" class="level2">
+<h2>Conclusion</h2>
+<p>This tutorial went through some of the common use cases of variables within Python 3. Variables are an important building block of programming, serving as symbols that stand in for the value of a <a href="https://www.digitalocean.com/community/tutorials/understanding-data-tyes-in-python-3">data type</a> you are using in a program.</p>
+</section>
+</section>
+</body>
+</html>
+

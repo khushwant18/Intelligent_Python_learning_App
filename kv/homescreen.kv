@@ -1,0 +1,55 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation:"vertical"
+        AnchorLayout:
+            size_hint_y:None
+            anchor_x:'right'
+            anchor_y:'top'
+            height: "80dp"
+            Image:
+                source: 'icons/logo.png'
+                # size: self.texture_size
+            # Label:
+            #     text: 'Welcome'
+            #     font_size:'30sp'
+            #     # color: 1, 0, 0, 1
+            #     canvas.before:
+            #         Color:
+            #             rgba: 0.5, 0.5, 0.5, 1
+            #         Rectangle:
+            #             pos: self.pos
+            #             size: self.size
+        StackLayout:
+            padding:20
+            spacing:50
+            BoxLayout:
+                orientation:"vertical"
+                size_hint_y:None
+                spacing:10
+                Label:
+                    id:info
+                    height:"10dp"
+                    size_hint_y:None
+                    text:''
+                    markup: True    
+                TextInput:
+                    id: username_field
+                    hint_text:'Username'
+                    foreground_color: 0.19, 0.19, 0.19, 1
+                    multiline: False
+                    on_text_validate: pwd_field.focus = True
+                TextInput:
+                    id:pwd_field
+                    hint_text:'Password'
+                    password: 'True'
+                    multiline: False
+                    on_text_validate: root.validate_user()
+            BoxLayout:
+                height:"40dp"
+                size_hint_y:None
+                Button:
+                    id:signin
+                    text:
+                        "Sign In"
+                    on_release:
+                        on_text_validate: root.validate_user()

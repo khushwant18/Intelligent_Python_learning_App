@@ -1,0 +1,58 @@
+<IButton@ImageButton>:
+    size_hint: None, None
+    size: 135,135
+    group: 'tool'
+
+<SelectScreen>:
+    BoxLayout:
+        orientation:"vertical"
+        padding:20
+        spacing: 20
+        BoxLayout:
+            height:"40dp"
+            size_hint_y:None
+            Button:
+                text:
+                    "Select a resource"
+        StackLayout:
+            padding:50
+            spacing:20
+            IButton:
+                source:"icons/1.jpg"
+                on_release:
+                    app.change_screen("book_screen")
+            IButton:
+                source:"icons/2.jpg"
+                on_release:
+                    app.change_screen("book_screen")                
+            IButton:
+                source:"icons/3.jpg"
+                on_release:
+                    app.change_screen("book_screen")                        
+            IButton:
+                source:"icons/4.jpg"
+                on_release:
+                    app.change_screen("book_screen")
+        StackLayout:
+            padding:125
+            IButton:
+                source:"icons/test.png"
+                on_release:
+                    app.change_screen("ques_screen")
+            Label:
+                text:'Take Test'
+                color: 0,0,0,1
+        BoxLayout:
+            size_hint_y:None
+            height:"40dp"
+            spacing:10          
+            Button:
+                text:
+                    "<"
+                on_release:
+                    app.change_screen("home_screen")
+            # Button:
+            #     text:
+            #         "Settings"
+            #     on_release:
+            #         app.change_screen("settings_screen")

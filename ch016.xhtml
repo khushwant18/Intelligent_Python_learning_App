@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Convert Data Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-convert-data-types" class="level1">
+<h1>How To Convert Data Types</h1>
+<p>In Python, <a href="ch011.xhtml">data types</a> are used to classify one particular type of data, determining the values that you can assign to the type and the operations you can perform on it. When programming, there are times we need to convert values between types in order to manipulate values in a different way. For example, we may need to concatenate numeric values with strings, or represent decimal places in numbers that were initialized as integer values.</p>
+<p>This tutorial will guide you through converting numbers, strings, tuples and lists, as well as provide examples to help familiarize yourself with different use cases.</p>
+<section id="converting-number-types" class="level2">
+<h2>Converting Number Types</h2>
+<p>In Python, there are two <a href="ch011.xhtml#numbers">number data types</a>: <a href="ch011.xhtml#integers">integers</a> and <a href="ch011.xhtml#floating-point-numbers">floating-point numbers</a> or floats. Sometimes you are working on someone else’s code and will need to convert an integer to a float or vice versa, or you may find that you have been using an integer when what you really need is a float. Python has built-in methods to allow you to easily convert integers to floats and floats to integers.</p>
+<section id="converting-integers-to-floats" class="level3">
+<h3>Converting Integers to Floats</h3>
+<p>Python’s method <code>float()</code> will convert integers to floats. To use this function, add an integer inside of the parentheses:</p>
+<figure class="code">
+<pre class="python"><code>float(57)</code></pre>
+</figure>
+<p>In this case, <code>57</code> will be converted to <code>57.0</code>.</p>
+<p>You can also use this with a variable. Let’s declare <code>f</code> as equal to <code>57</code>, and then print out the new float:</p>
+<figure class="code">
+<pre class="python"><code>f = 57
+print(float(f))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>57.0</code></pre>
+</figure>
+<p>By using the <code>float()</code> function, we can convert integers to floats.</p>
+</section>
+<section id="converting-floats-to-integers" class="level3">
+<h3>Converting Floats to Integers</h3>
+<p>Python also has a built-in function to convert floats to integers: <code>int()</code>.</p>
+<p>The <code>int()</code> function works similarly to the <code>float()</code> function: you can add a floating-point number inside of the parentheses to convert it to an integer:</p>
+<figure class="code">
+<pre class="python"><code>int(390.8)</code></pre>
+</figure>
+<p>In this case, <code>390.8</code> will be converted to <code>390</code>.</p>
+<p>You can also use this with variables. Let’s declare <code>b</code> as equal to <code>125.0</code>, and <code>c</code> as equal to <code>390.8</code>, then print out the new floats:</p>
+<figure class="code">
+<pre class="python"><code>b = 125.0
+c = 390.8
+
+print(int(b))
+print(int(c))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>125
+390</code></pre>
+</figure>
+<p>When converting floats to integers with the <code>int()</code> function, Python cuts off the decimal and remaining numbers of a float to create an integer. Even though we may want to round 390.8 up to 391, Python will not do this through the <code>int()</code> function.</p>
+</section>
+<section id="numbers-converted-through-division" class="level3">
+<h3>Numbers Converted Through Division</h3>
+<p>In Python 3, relevant quotients are converted from integers to floats when doing <a href="ch019.xhtml#multiplication-and-division">division</a> though they are not in <a href="ch002.xhtml">Python 2</a>. That is, when you divide 5 by 2, in Python 3 you will get a float for an answer (2.5):</p>
+<figure class="code">
+<pre class="python"><code>a = 5 / 2
+print(a)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>2.5</code></pre>
+</figure>
+<p>In Python 2, since you were dealing with two integers, you would receive an integer back as your answer, instead: <code>5 / 2 = 2</code>. Read “<a href="ch002.xhtml">Python 2 vs Python 3: Practical Considerations</a>” for more information about the differences between Python 2 and Python 3.</p>
+</section>
+</section>
+<section id="converting-with-strings" class="level2">
+<h2>Converting with Strings</h2>
+<p>A <strong><a href="https://www.digitalocean.com/community/tutorial_series/working-with-strings-in-python-3">string</a></strong> is a sequence of one or more characters (letters, numbers, symbols). Strings are a common form of data in computer programs, and we may need to convert strings to numbers or numbers to strings fairly often, especially when we are taking in user-generated data.</p>
+<section id="converting-numbers-to-strings" class="level3">
+<h3>Converting Numbers to Strings</h3>
+<p>We can convert numbers to strings through using the <code>str()</code> method. We’ll pass either a number or a variable into the parentheses of the method and then that numeric value will be converted into a string value.</p>
+<p>Let’s first look at converting integers. To convert the integer <code>12</code> to a string value, you can pass <code>12</code> into the <code>str()</code> method:</p>
+<figure class="code">
+<pre class="python"><code>str(12)</code></pre>
+</figure>
+<p>When running <code>str(12)</code> in the Python interactive shell with the <code>python</code> command in a terminal window, you’ll receive the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>&#39;12&#39;</code></pre>
+</figure>
+<p>The quotes around the number 12 signify that the number is no longer an integer but is now a string value.</p>
+<p>With variables we can begin to see how practical it can be to convert integers to strings. Let’s say we want to keep track of a user’s daily programming progress and are inputting how many lines of code they write at a time. We would like to show this feedback to the user and will be printing out string and integer values at the same time:</p>
+<figure class="code">
+<pre class="python"><code>user = &quot;Sammy&quot;
+lines = 50
+
+print(&quot;Congratulations, &quot; + user + &quot;! You just wrote &quot; + lines + &quot; lines of code.&quot;)</code></pre>
+</figure>
+<p>When we run this code, we receive the following error:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>TypeError: Can&#39;t convert &#39;int&#39; object to str implicitly</code></pre>
+</figure>
+<p>We’re not able to concatenate strings and integers in Python, so we’ll have to convert the variable <code>lines</code> to be a string value:</p>
+<figure class="code">
+<pre class="python"><code>user = &quot;Sammy&quot;
+lines = 50
+
+print(&quot;Congratulations, &quot; + user + &quot;! You just wrote &quot; + str(lines) + &quot; lines of code.&quot;)</code></pre>
+</figure>
+<p>Now, when we run the code, we receive the following output that congratulates our user on their progress:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Congratulations, Sammy! You just wrote 50 lines of code.</code></pre>
+</figure>
+<p>If we are looking to convert a float to a string rather than an integer to a string, we follow the same steps and format. When we pass a float into the <code>str()</code> method, a string value of the float will be returned. We can use either the float value itself or a variable:</p>
+<figure class="code">
+<pre class="python"><code>print(str(421.034))
+
+f = 5524.53
+print(str(f))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>421.034
+5524.53</code></pre>
+</figure>
+<p>We can test to make sure it’s right by concatenating with a string:</p>
+<figure class="code">
+<pre class="python"><code>f = 5524.53
+print(&quot;Sammy has &quot; + str(f) + &quot; points.&quot;)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy has 5524.53 points.</code></pre>
+</figure>
+<p>We can be sure our float was properly converted to a string because the concatenation was performed without error.</p>
+</section>
+<section id="converting-strings-to-numbers" class="level3">
+<h3>Converting Strings to Numbers</h3>
+<p>Strings can be converted to numbers by using the <code>int()</code> and <code>float()</code> methods.</p>
+<p>If your string does not have decimal places, you’ll most likely want to convert it to an integer by using the <code>int()</code> method.</p>
+<p>Let’s use the example of the user Sammy keeping track of lines of code written each day. We may want to manipulate those values with math to provide more interesting feedback for the user, but those values are currently stored in strings:</p>
+<figure class="code">
+<pre class="python"><code>lines_yesterday = &quot;50&quot;
+lines_today = &quot;108&quot;
+
+lines_more = lines_today - lines_yesterday
+
+print(lines_more)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>TypeError: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;</code></pre>
+</figure>
+<p>Because the two numeric values were stored in strings, we received an error. The operand <code>-</code> for subtraction is not a valid operand for two string values.</p>
+<p>Let’s modify the code to include the <code>int()</code> method that will convert the strings to integers, and allow us to do math with values these that were originally strings.</p>
+<figure class="code">
+<pre class="python"><code>lines_yesterday = &quot;50&quot;
+lines_today = &quot;108&quot;
+
+lines_more = int(lines_today) - int(lines_yesterday)
+
+print(lines_more)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>58</code></pre>
+</figure>
+<p>The variable <code>lines_more</code> is automatically an integer, and it is equal to the numeric value of 58 in this example.</p>
+<p>We can also convert the numbers in the example above to float values by using the <code>float()</code> method in place of the <code>int()</code> method. Instead of receiving the output of <code>58</code>, we’ll receive the output of <code>58.0</code>, a float.</p>
+<p>The user Sammy is earning points in decimal values</p>
+<figure class="code">
+<pre class="python"><code>total_points = &quot;5524.53&quot;
+new_points = &quot;45.30&quot;
+
+new_total_points = total_points + new_points
+
+print(new_total_points)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>5524.5345.30</code></pre>
+</figure>
+<p>In this case, using the <code>+</code> operand with two strings is a valid operation, but it is concatenating two strings rather than adding two numeric values together. So, our output looks unusual since it just places the two values next to each other.</p>
+<p>We’ll want to convert these strings to floats prior to performing any math with the <code>float()</code> method:</p>
+<figure class="code">
+<pre class="python"><code>total_points = &quot;5524.53&quot;
+new_points = &quot;45.30&quot;
+
+new_total_points = float(total_points) + float(new_points)
+
+print(new_total_points)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>5569.83</code></pre>
+</figure>
+<p>Now that we have converted the two strings to floats, we receive the anticipated result that adds <code>45.30</code> to <code>5524.53</code>.</p>
+<p>If we try to convert a string value with decimal places to an integer, we’ll receive an error:</p>
+<figure class="code">
+<pre class="python"><code>f = &quot;54.23&quot;
+print(int(f))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>ValueError: invalid literal for int() with base 10: &#39;54.23&#39;</code></pre>
+</figure>
+<p>If we pass a decimal value in a string to the <code>int()</code> method we’ll receive an error because it will not convert to an integer.</p>
+<p>Converting strings to numbers enables us to quickly modify the data type we are working with so that we can perform operations on numeric values that were originally cast as strings.</p>
+</section>
+</section>
+<section id="converting-to-tuples-and-lists" class="level2">
+<h2>Converting to Tuples and Lists</h2>
+<p>You can use the methods <code>list()</code> and <code>tuple()</code> to convert the values passed to them into the list and tuple data type respectively. In Python: - a <strong><a href="ch022.xhtml">list</a></strong> is a mutable ordered sequence of elements that is contained within square brackets <code>[ ]</code>. - a <strong><a href="ch025.xhtml">tuple</a></strong> is an immutable ordered sequence of elements contained within parentheses <code>( )</code>.</p>
+<section id="converting-to-tuples" class="level3">
+<h3>Converting to Tuples</h3>
+<p>Let’s start with converting a list to a tuple. Converting a list to a tuple, because it’s an immutable data type, can allow substantial optimization to the programs that we create. When we use the method <code>tuple()</code> it will return the tuple version of the value passed to it.</p>
+<figure class="code">
+<pre class="python"><code>print(tuple([&#39;pull request&#39;, &#39;open source&#39;, &#39;repository&#39;, &#39;branch&#39;]))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>(&#39;pull request&#39;, &#39;open source&#39;, &#39;repository&#39;, &#39;branch&#39;)</code></pre>
+</figure>
+<p>We see that a tuple is printed out in the output, as the items are now contained within parentheses rather than square brackets.</p>
+<p>Let’s use <code>tuple()</code> with a variable that represents a list:</p>
+<figure class="code">
+<pre class="python"><code>sea_creatures = [&#39;shark&#39;, &#39;cuttlefish&#39;, &#39;squid&#39;, &#39;mantis shrimp&#39;]
+print(tuple(sea_creatures))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>(&#39;shark&#39;, &#39;cuttlefish&#39;, &#39;squid&#39;, &#39;mantis shrimp&#39;)</code></pre>
+</figure>
+<p>Again, we see that the list value is changed to a tuple value, indicated by the parentheses. We can convert any iterable type to a tuple, including strings:</p>
+<figure class="code">
+<pre class="python"><code>print(tuple(&#39;Sammy&#39;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>(&#39;S&#39;, &#39;a&#39;, &#39;m&#39;, &#39;m&#39;, &#39;y&#39;)</code></pre>
+</figure>
+<p>Because we can iterate through strings, we can convert them to tuples with the <code>tuple()</code> method. With data types that are not iterable, however, like integers and floats, we will receive a type error:</p>
+<figure class="code">
+<pre class="python"><code>print(tuple(5000))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>TypeError: &#39;int&#39; object is not iterable</code></pre>
+</figure>
+<p>While it is possible to convert the integer to a string and then convert to a tuple, as in <code>tuple(str(5000))</code>, it is best to opt for readable code over complicated conversions.</p>
+</section>
+<section id="converting-to-lists" class="level3">
+<h3>Converting to Lists</h3>
+<p>Converting values, especially tuples, to lists can be useful when you need to have a mutable version of that value.</p>
+<p>We’ll use the <code>list()</code> method to convert the following tuple to a list. Because the syntax for creating a list uses parentheses, be sure to include the parentheses of the <code>list()</code> method, and in this case the <code>print()</code> method as well:</p>
+<figure class="code">
+<pre class="python"><code>print(list((&#39;blue coral&#39;, &#39;staghorn coral&#39;, &#39;pillar coral&#39;)))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>[&#39;blue coral&#39;, &#39;staghorn coral&#39;, &#39;pillar coral&#39;]</code></pre>
+</figure>
+<p>The square brackets signal that a list has been returned from the original tuple value that was passed through the <code>list()</code> method.</p>
+<p>To make the code more readable, we can remove one of the pairs of parentheses by using a variable:</p>
+<figure class="code">
+<pre class="python"><code>coral = (&#39;blue coral&#39;, &#39;staghorn coral&#39;, &#39;pillar coral&#39;)
+list(coral)</code></pre>
+</figure>
+<p>If we print <code>list(coral)</code> we would receive the same output as above.</p>
+<p>Just like tuples, strings can be converted to lists:</p>
+<figure class="code">
+<pre class="python"><code>print(list(&#39;shark&#39;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>[&#39;s&#39;, &#39;h&#39;, &#39;a&#39;, &#39;r&#39;, &#39;k&#39;]</code></pre>
+</figure>
+<p>Here the string <code>'shark'</code> was converted to a list, providing a mutable version of the original value.</p>
+</section>
+</section>
+<section id="conclusion-14" class="level2">
+<h2>Conclusion</h2>
+<p>This Python tutorial demonstrated how to convert several of the important native data types to other data types, primarily through built-in methods. Being able to convert data types in Python provides you with extra flexibility when writing your programs.</p>
+</section>
+</section>
+</body>
+</html>
+

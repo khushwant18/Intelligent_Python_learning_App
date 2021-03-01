@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Work with the Python Interactive Console</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-work-with-the-python-interactive-console" class="level1">
+<h1>How To Work with the Python Interactive Console</h1>
+<p>The Python interactive console (also called the Python interpreter or Python shell) provides programmers with a quick way to execute commands and try out or test code without creating a file.</p>
+<p>Providing access to all of Python’s built-in functions and any installed modules, command history, and auto-completion, the interactive console offers the opportunity to explore Python and the ability to paste code into programming files when you are ready.</p>
+<p>This tutorial will go over how to work with the Python interactive console and leverage it as a programming tool.</p>
+<section id="entering-the-interactive-console" class="level2">
+<h2>Entering the Interactive Console</h2>
+<p>The Python interactive console can be accessed from any local computer or server with Python installed.</p>
+<p>The command you generally will want to use to enter into the Python interactive console for your default version of Python is:</p>
+<figure class="code">
+<pre class="command"><code>python</code></pre>
+</figure>
+<p>If you have set up a <a href="ch007.xhtml">programming environment</a>, you can launch the environment and access the version of Python and modules you have installed in that environment by first entering into that environment:</p>
+<figure class="code">
+<pre class="command"><code>cd environments
+. my_env/bin/activate</code></pre>
+</figure>
+<p>Then typing the <code>python</code> command:</p>
+<figure class="code">
+<pre><code>(my_env) sammy@ubuntu:~/environments$ python</code></pre>
+</figure>
+<p>In this case, the default version of Python is Python 3.5.2, which is displayed in the output once we enter the command, along with the relevant copyright notice and some commands you can type for extra information:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Python 3.5.2 (default, Nov 17 2016, 17:05:23)
+[GCC 5.4.0 20160609] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>The primary prompt for the next command is three greater-than signs (<code>&gt;&gt;&gt;</code>):</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt;</code></pre>
+</figure>
+<p>You can target specific versions of Python by appending the version number to your command, with no spaces:</p>
+<figure class="code">
+<pre class="command"><code>python2.7</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Python 2.7.12 (default, Nov 19 2016, 06:48:10)
+[GCC 5.4.0 20160609] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>Here, we received the output that Python 2.7.12 will be used. If this is our default version of Python 2, we could also have entered into this interactive console with the command <code>python2</code>.</p>
+<p>Alternatively, we can call the default Python 3 version with the following command:</p>
+<figure class="code">
+<pre class="command"><code>python3</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Python 3.5.2 (default, Nov 17 2016, 17:05:23)
+[GCC 5.4.0 20160609] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>We could have also called the above interactive console with the command <code>python3.5</code>.</p>
+<p>With the Python interactive console running, we can move onto working with the shell environment for Python.</p>
+</section>
+<section id="working-with-the-python-interactive-console" class="level2">
+<h2>Working with the Python Interactive Console</h2>
+<p>The Python interactive interpreter accepts Python syntax, which you place following the <code>&gt;&gt;&gt;</code> prefix.</p>
+<p>We can, for example, assign values to <a href="ch017.xhtml">variables</a>:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; birth_year = 1868</code></pre>
+</figure>
+<p>Once we have assigned the integer value of <code>1868</code> to the variable <code>birth_year</code>, we will press return and receive a new line with the three greater-than signs as a prefix:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; birth_year = 1868</code></pre>
+</figure>
+<p>We can continue to assign variables and then <a href="ch019.xhtml">perform math with operators</a> to get calculations returned:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; birth_year = 1868
+&gt;&gt;&gt; death_year = 1921
+&gt;&gt;&gt; age_at_death = death_year - birth_year
+&gt;&gt;&gt; print(age_at_death)
+53
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>As we would with a script in a file, we assigned variables, subtracted one variable from the other, and asked the console to print the variable that represents the difference.</p>
+<p>Just like in any form of Python, you can also use the interactive console as a calculator:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; 203 / 20
+10.15
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>Here, we divided the integer <code>203</code> by <code>20</code> and were returned the quotient of <code>10.15</code>.</p>
+<section id="multiple-lines" class="level3">
+<h3>Multiple Lines</h3>
+<p>When we are writing Python code the will cover multiple lines, the interpreter will use the secondary prompt for continuation lines, three dots (<code>...</code>).</p>
+<p>To break out of these continuation lines, you will need to press <code>ENTER</code> twice.</p>
+<p>We can see what this looks like in the following code that assigns two variables and then uses a <a href="ch029.xhtml">conditional statement</a> to determine what to print out to the console:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; sammy = &#39;Sammy&#39;
+&gt;&gt;&gt; shark = &#39;Shark&#39;
+&gt;&gt;&gt; if len(sammy) &gt; len(shark):
+...     print(&#39;Sammy codes in Java.&#39;)
+... else:
+...     print(&#39;Sammy codes in Python.&#39;)
+...
+Sammy codes in Python.
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>In this case the lengths of the two <a href="https://www.digitalocean.com/community/tutorial_series/working-with-strings-in-python-3">strings</a> are equal, so the <code>else</code> statement prints. Note that you will need to keep Python indenting convention of four whitespaces, otherwise you will receive an error:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; if len(sammy) &gt; len(shark):
+... print(&#39;Sammy codes in Java.&#39;)
+  File &quot;&lt;stdin&gt;&quot;, line 2
+    print(&#39;Sammy codes in Java.&#39;)
+        ^
+IndentationError: expected an indented block
+&gt;&gt;&gt;</code></pre>
+</figure>
+<p>You can not only experiment with code across multiple lines in the Python console, you can also import modules.</p>
+</section>
+<section id="importing-modules" class="level3">
+<h3>Importing Modules</h3>
+<p>The Python interpreter provides a quick way for you to check to see if modules are available in a specific programming environment. You can do this by using the <code>import</code> statement:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; import matplotlib
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ImportError: No module named &#39;matplotlib&#39;</code></pre>
+</figure>
+<p>In the case above, the module <a href="https://www.digitalocean.com/community/tutorials/how-to-plot-data-in-python-3-using-matplotlib">matplotlib</a> was not available within the current programming environment.</p>
+<p>In order to install it, we’ll need to leave the interactive interpreter and install with pip as usual:</p>
+<figure class="code">
+<pre><code>(my_env) sammy@ubuntu:~/environments$ pip install matplotlib</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Collecting matplotlib
+  Downloading matplotlib-2.0.2-cp35-cp35m-manylinux1_x86_64.whl (14.6MB)
+...
+Installing collected packages: pyparsing, cycler, python-dateutil, numpy, pytz, matplotlib
+Successfully installed cycler-0.10.0 matplotlib-2.0.2 numpy-1.13.0 pyparsing-2.2.0 python-dateutil-2.6.0 pytz-2017.2</code></pre>
+</figure>
+<p>Once the matplotlib module along with its dependencies are successfully installed, you can go back into the interactive interpreter:</p>
+<figure class="code">
+<pre><code>(my_env) sammy@ubuntu:~/environments$ python</code></pre>
+</figure>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; import matplotlib</code></pre>
+</figure>
+<p>At this point you will receive no error message and can use the installed module either within the shell or within a file.</p>
+</section>
+</section>
+<section id="leaving-the-python-interactive-console" class="level2">
+<h2>Leaving the Python Interactive Console</h2>
+<p>There are two main ways to leave the Python interactive console, either with a keyboard shortcut or a Python function.</p>
+<p>The keyboard shortcut <code>CTRL</code> + <code>D</code> in *nix-based systems or <code>CTRL</code> + <code>Z</code> then the <code>CTRL</code> key in Windows systems will interrupt your console and return you to your original terminal environment:</p>
+<figure class="code">
+<pre><code>...
+&gt;&gt;&gt; age_at_death = death_year - birth_year
+&gt;&gt;&gt; print(age_at_death)
+53
+&gt;&gt;&gt;
+sammy@ubuntu:~/environments$</code></pre>
+</figure>
+<p>Alternatively, the Python function <code>quit()</code> will quit out of the interactive console and also bring you back to the original terminal environment that you were previously in:</p>
+<figure class="code">
+<pre><code>&gt;&gt;&gt; octopus = &#39;Ollie&#39;
+&gt;&gt;&gt; quit()
+sammy@PythonUbuntu:~/environments$</code></pre>
+</figure>
+<p>When you use the function <code>quit()</code>, it will show up in your history file, but the keyboard shortcut <code>CTRL</code> + <code>D</code> will not be recorded:</p>
+<figure class="code">
+<figcaption>
+File: /home/sammy/.python_history
+</figcaption>
+<pre><code>...
+age_at_death = death_year - birth_year
+print(age_at_death)
+octopus = &#39;Ollie&#39;
+quit()</code></pre>
+</figure>
+<p>Quitting the Python interpreter can be done either way, depending on what makes sense for your workflow and your history needs.</p>
+</section>
+<section id="accessing-history" class="level2">
+<h2>Accessing History</h2>
+<p>One of the useful things about the Python interactive console is that all of your commands are logged to the <code>.python_history</code> file in *nix-based systems, which you can look at in a text editor like nano, for instance:</p>
+<figure class="code">
+<pre class="command"><code>nano ~/.python_history</code></pre>
+</figure>
+<p>Once opened with a text editor, your Python history file will look something like this, with your own Python command history:</p>
+<figure class="code">
+<figcaption>
+File: /home/sammy/.python_history
+</figcaption>
+<pre><code>import pygame
+quit()
+if 10 &gt; 5:
+    print(&quot;hello, world&quot;)
+else:
+    print(&quot;nope&quot;)
+sammy = &#39;Sammy&#39;
+shark = &#39;Shark&#39;
+...</code></pre>
+</figure>
+<p>Once you are done with your file, you can press <code>CTRL</code> + <code>X</code> to leave nano.</p>
+<p>By keeping track of all of your Python history, you can go back to previous commands and experiments, and copy and paste or modify that code for use in Python programming files or in a <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-jupyter-notebook-for-python-3">Jupyter Notebook</a>.</p>
+</section>
+<section id="conclusion-7" class="level2">
+<h2>Conclusion</h2>
+<p>The Python interactive console provides a space to experiment with Python code. You can use it as a tool for testing, working out logic, and more.</p>
+<p>For use with debugging Python programming files, you can use the Python <code>code</code> module to open up an interactive interpreter within a file, which you can read about in our guide <a href="ch040.xhtml">How To Debug Python with an Interactive Console</a>.</p>
+</section>
+</section>
+</body>
+</html>
+

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Install Python 3 and Set Up a Local Programming Environment on Windows 10</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-install-python-3-and-set-up-a-local-programming-environment-on-windows-10" class="level1">
+<h1>How To Install Python 3 and Set Up a Local Programming Environment on Windows 10</h1>
+<p>Python is a versatile programming language that can be used for many different programming projects. First published in 1991 with a name inspired by the British comedy group Monty Python, the development team wanted to make Python a language that was fun to use. Easy to set up, and written in a relatively straightforward style with immediate feedback on errors, Python is a great choice for beginners and experienced developers alike. Python 3 is the most current version of the language and is considered to be the future of Python.</p>
+<p>This tutorial will guide you through installing Python 3 on your local Windows 10 machine and setting up a programming environment via the command line.</p>
+<section id="prerequisites-2" class="level2">
+<h2>Prerequisites</h2>
+<p>You will need a Windows 10 computer with administrative access that is connected to the internet.</p>
+</section>
+<section id="step-1-opening-and-configuring-powershell" class="level2">
+<h2>Step 1 — Opening and Configuring PowerShell</h2>
+<p>We’ll be completing most of our installation and setup on a command-line interface, which is a non-graphical way to interact with your computer. That is, instead of clicking on buttons, you’ll be typing in text and receiving feedback from your computer through text as well. The command line, also known as a shell, can help you modify and automate many of the tasks you do on a computer every day, and is an essential tool for software developers.</p>
+<p>PowerShell is a program from Microsoft that provides a command-line shell interface. Administrative tasks are performed by running <strong>cmdlets</strong>, which are pronounced <em>command-lets</em>, specialized classes of the .NET software framework that can carry out operations. Open-sourced in August 2016, PowerShell is now available across platforms, for both Windows and UNIX systems (including Mac and Linux).</p>
+<p>To find Windows PowerShell, you can right-click on the Start menu icon on the lower left-hand corner of your screen. When the menu pops up, you should click on “Search,” then type “PowerShell” into the search bar. When you are presented with options, right-click on “Windows PowerShell,” the Desktop app. For our purposes, we’ll select “Run as Administrator.” When you are prompted with a dialogue box that asks “Do you want to allow this app to make changes to your PC?” click on “Yes.”</p>
+<p>Once you do this, you’ll see a text-based interface that has a string of words that looks like this:</p>
+<figure>
+<img src="../media/file2.png" alt="Windows 10 PowerShell" /><figcaption>Windows 10 PowerShell</figcaption>
+</figure>
+<p>We can switch out of the system folder by typing the following command:</p>
+<figure class="code">
+<pre class="command"><code>cd ~</code></pre>
+</figure>
+<p>Then we’ll be in a directory such as <code>PS C:\Users\<span class="highlight">Sammy</span></code>.</p>
+<p>To continue with our installation process, we are going to set up some permissions through PowerShell. Configured to run in the most secure mode by default, there are a few levels of permissions that you can set up as an administrator:</p>
+<ul>
+<li><strong>Restricted</strong> is the default execution policy, under this mode you will not be able to run scripts, and PowerShell will work only as an interactive shell.</li>
+<li><strong>AllSigned</strong> will enable you to run all scripts and configuration files that are signed by a trusted publisher, meaning that you could potentially open your machine up to the risk of running malicious scripts that happen to be signed by a trusted publisher.</li>
+<li><strong>RemoteSigned</strong> will let you run scripts and configuration files downloaded from the internet signed by trusted publishers, again opening your machine up to vulnerabilities if these trusted scripts are actually malicious.</li>
+<li><strong>Unrestricted</strong> will run all scripts and configuration files downloaded from the internet as soon as you confirm that you understand that the file was downloaded from the internet. In this case no digital signature is required so you could be opening your machine up to the risk of running unsigned and potentially malicious scripts downloaded from the internet.</li>
+</ul>
+<p>We are going to use the RemoteSigned execution policy to set the permission for the current user that allows the PowerShell to accept downloaded scripts that we trust without making the permissions as broad as they would be with an Unrestricted permission. In the PowerShell, let’s type:</p>
+<figure class="code">
+<pre class="command"><code>Set-ExecutionPolicy -Scope CurrentUser</code></pre>
+</figure>
+<p>PowerShell will then prompt us to provide an execution policy, and since we want to use RemoteSigned, we’ll type:</p>
+<figure class="code">
+<pre class="command"><code>RemoteSigned</code></pre>
+</figure>
+<p>Once we press <code>enter</code> we’ll be asked if we do want to change the execution policy. Type the letter <code>y</code> for “yes,” and allow the changes to take effect. We can confirm that this worked by asking for the current permissions across the machine by typing:</p>
+<figure class="code">
+<pre class="command"><code>Get-ExecutionPolicy -List</code></pre>
+</figure>
+<p>You should receive output that looks something like this:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      Process       Undefined
+  CurrentUser    RemoteSigned
+ LocalMachine       Undefined</code></pre>
+</figure>
+<p>This confirms that the current user can run trusted scripts downloaded from the internet. We can now move on to downloading the files we will need to set up our Python programming environment.</p>
+</section>
+<section id="step-2-installing-the-package-manager-chocolatey" class="level2">
+<h2>Step 2 — Installing the Package Manager Chocolatey</h2>
+<p>A <strong>package manager</strong> is a collection of software tools that work to automate installation processes that include the initial installation, upgrading and configuring of software, and removing software as needed. They keep software installations in a central location and can maintain all software packages on the system in formats that are commonly used.</p>
+<p>Chocolatey is a command-line package manager built for Windows that works like <code>apt-get</code> does on Linux. Available in an open-source version, Chocolatey will help you quickly install applications and tools, and we will be using it to download what we need for our development environment.</p>
+<p>Before we install the script, let’s read it to confirm that we are happy with the changes it will make to our machine. To do this, we will use the .NET scripting framework to download and display the Chocolatey script within the terminal window. We’ll create a WebClient object called <code>$script</code> (you can call it whatever you want as long as you use <code>$</code> as the first character), that shares Internet connection settings with Internet Explorer:</p>
+<figure class="code">
+<pre class="command"><code>$script = New-Object Net.WebClient</code></pre>
+</figure>
+<p>Let’s look at the options that we have available to us by piping the object to the <code>Get-Member</code> class to return all members (properties and methods) of this WebClient object:</p>
+<figure class="code">
+<pre class="command"><code>$script | Get-Member</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Snippet of Ouput
+</figcaption>
+<pre class="python"><code> . . .
+DownloadFileAsync         Method     void DownloadFileAsync(uri address, string fileName), void DownloadFileAsync(ur...
+DownloadFileTaskAsync     Method     System.Threading.Tasks.Task DownloadFileTaskAsync(string address, string fileNa...
+DownloadString            Method     string DownloadString(string address), string DownloadString(uri address) #method we will use
+DownloadStringAsync       Method     void DownloadStringAsync(uri address), void DownloadStringAsync(uri address, Sy...
+DownloadStringTaskAsync   Method     System.Threading.Tasks.Task[string] DownloadStringTaskAsync(string address), Sy…
+ . . .</code></pre>
+</figure>
+<p>Looking over the output, we can identify the <code>DownloadString</code> method that we can use to display the script and signature in the PowerShell window. Let’s implement this method:</p>
+<figure class="code">
+<pre class="command"><code>$script.DownloadString(&quot;https://chocolatey.org/install.ps1&quot;)</code></pre>
+</figure>
+<p>After we inspect the script, we can install Chocolatey by typing the following into PowerShell:</p>
+<figure class="code">
+<pre class="command"><code>iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex</code></pre>
+</figure>
+<p>The cmdlet <code>iwr</code> or <code>Invoke-WebRequest</code> allows us to extract data from the web. This will pass the script to the <code>iex</code> or <code>Invoke-Expression</code> cmdlet, which will execute the contents of the script, running the installation script for the Chocolatey package manager.</p>
+<p>Allow PowerShell to install Chocolatey. Once it is fully installed, we can begin installing additional tools with the <code>choco</code> command.</p>
+<p>If we need to upgrade Chocolatey at any time in the future, we can run the following command:</p>
+<figure class="code">
+<pre class="command"><code>choco upgrade chocolatey</code></pre>
+</figure>
+<p>With our package manager installed, we can go on to install the rest of what we need for our Python 3 programming environment.</p>
+</section>
+<section id="step-3-installing-the-text-editor-nano-optional" class="level2">
+<h2>Step 3 — Installing the Text Editor nano (Optional)</h2>
+<p>We are now going to install nano, a text editor that uses a command line interface, which we can use to write programs directly within PowerShell. This is not a compulsory step, as you can alternatively use a text editor with a graphical user interface such as Notepad, but nano will get us more accustomed to using PowerShell.</p>
+<p>Let’s use Chocolatey to install nano:</p>
+<figure class="code">
+<pre class="command"><code>choco install -y nano</code></pre>
+</figure>
+<p>Here we used the <code>-y</code> flag so that we confirm automatically that we want to run the script without being prompted.</p>
+<p>Once nano is installed, we will be able to use the <code>nano</code> command to create new text files and will eventually use it to write our first Python program.</p>
+</section>
+<section id="step-4-installing-python-3-1" class="level2">
+<h2>Step 4 — Installing Python 3</h2>
+<p>Just like we did with nano above, we will use Chocolatey to install Python 3:</p>
+<figure class="code">
+<pre class="command"><code>choco install -y python3</code></pre>
+</figure>
+<p>PowerShell will now install Python 3, generating output within PowerShell during that process.</p>
+<p>Once the process is completed, you should see the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Environment Vars (like PATH) have changed. Close/reopen your shell to
+ See the changes (or in powershell/cmd.exe just type &#39;refreshenv&#39;).
+The install of python3 was successful.
+ Software installed as &#39;EXE&#39;, install location is likely default.
+
+Chocolatey installed 1/1 packages. 0 packages failed.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).</code></pre>
+</figure>
+<p>With the installation is finished, you’ll want to confirm that Python is installed and ready to go. To see the changes, use the command <code>refreshenv</code> or close and re-open PowerShell as an Administrator, then check the version of Python available to you on your local machine:</p>
+<figure class="code">
+<pre class="command"><code>python -V</code></pre>
+</figure>
+<p>You should get output such as:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Python <span class="highlight">3.5.1</span></code></pre>
+</figure>
+<p>Alongside Python, pip will be installed, which will manage software packages for Python. Let’s ensure that pip is up-to-date by upgrading it:</p>
+<figure class="code">
+<pre class="command"><code>python -m pip install --upgrade pip</code></pre>
+</figure>
+<p>With Chocolatey, we can call Python 3 with the <code>python</code> command. We will use the <code>-m</code> flag to run the library module as a script, terminating the option list, and from there use <code>pip</code> to install its upgrade.</p>
+<p>Once Python is installed and pip updated, we can set up a virtual environment for our development projects.</p>
+</section>
+<section id="step-5-setting-up-a-virtual-environment" class="level2">
+<h2>Step 5 — Setting Up a Virtual Environment</h2>
+<p>Now that we have Chocolatey, nano, and Python installed, we can go on to create our programming environment with the <strong>venv</strong> module.</p>
+<p>Virtual environments enable you to have an isolated space on your computer for Python projects, ensuring that each of your projects can have its own set of dependencies that won’t disrupt any of your other projects.</p>
+<p>Setting up a programming environment provides us with greater control over our Python projects and over how different versions of packages are handled. This is especially important when working with third-party packages.</p>
+<p>You can set up as many Python programming environments as you want. Each environment is basically a directory or folder in your computer that has a few scripts in it to make it act as an environment.</p>
+<p>Choose which directory you would like to put your Python programming environments in, or create a new directory with <code>mkdir</code>, as in:</p>
+<figure class="code">
+<pre class="command"><code>mkdir <span class="highlight">Environments</span>
+cd <span class="highlight">Environments</span></code></pre>
+</figure>
+<p>Once you are in the directory where you would like the environments to live, you can create an environment by running the following command:</p>
+<figure class="code">
+<pre class="command"><code>python -m venv <span class="highlight">my_env</span></code></pre>
+</figure>
+<p>Using the <code>python</code> command, we will run the <code>venv</code> library module to create the virtual environment that in this case we have called <code><span class="highlight">my_env</span></code>.</p>
+<p>Essentially, <code>venv</code> sets up a new directory that contains a few items which we can view with the <code>ls</code> command:</p>
+<figure class="code">
+<pre class="command"><code>ls my_env</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/22/2016   2:20 PM                Include
+d-----        8/22/2016   2:20 PM                Lib
+d-----        8/22/2016   2:20 PM                Scripts
+-a----        8/22/2016   2:20 PM            107 pyvenv.cfg</code></pre>
+</figure>
+<p>Together, these files work to make sure that your projects are isolated from the broader context of your local machine, so that system files and project files don’t mix. This is good practice for version control and to ensure that each of your projects has access to the particular packages that it needs.</p>
+<p>To use this environment, you need to activate it, which you can do by typing the following command that calls the activate script in the <code>Scripts</code> directory:</p>
+<figure class="code">
+<pre class="command"><code>my_env\Scripts\activate</code></pre>
+</figure>
+<p>Your prompt will now be prefixed with the name of your environment, in this case it is called <span class="highlight">my_env</span>:</p>
+<figure class="code">
+<pre><code>(my_env) PS C:\Users\Sammy\Environments&gt;</code></pre>
+</figure>
+<p>This prefix lets us know that the environment <span class="highlight">my_env</span> is currently active, meaning that when we create programs here they will use only this particular environment’s settings and packages.</p>
+</section>
+<section id="step-6-creating-a-simple-program-1" class="level2">
+<h2>Step 6 — Creating a Simple Program</h2>
+<p>Now that we have our virtual environment set up, let’s create a simple “Hello, World!” program. This will make sure that our environment is working and gives us the opportunity to become more familiar with Python if we aren’t already.</p>
+<p>To do this, we’ll open up nano and create a new file:</p>
+<figure class="code">
+<pre><code>(my_env) PS C:\Users\Sammy&gt; nano hello.py</code></pre>
+</figure>
+<p>Once the text file opens up in Terminal we’ll type out our program:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Hello, World!&quot;)</code></pre>
+</figure>
+<p>Exit nano by typing the <code>control</code> and <code>x</code> keys, and when prompted to save the file press <code>y</code> then the <code>enter</code> key.</p>
+<p>Once you exit out of nano and return to your shell, let’s run the program:</p>
+<figure class="code">
+<pre><code>(my_env) PS C:\Users\Sammy&gt; python hello.py</code></pre>
+</figure>
+<p>The hello.py program that you just created should cause Terminal to produce the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Hello, World!</code></pre>
+</figure>
+<p>To leave the environment, simply type the command <code>deactivate</code> and you will return to your original directory.</p>
+</section>
+<section id="conclusion-3" class="level2">
+<h2>Conclusion</h2>
+<p>Congratulations! At this point you should have a Python 3 programming environment set up on your local Windows 10 machine and can begin a coding project!</p>
+<p>To set up Python 3 on another computer, follow the <a href="https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3">local programming environment guides</a> for <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-in-ubuntu-16-04">Ubuntu 16.04</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-debian-8">Debian 8</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-centos-7">CentOS 7</a>, or <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-mac-os-x">macOS</a>. You can also read about <a href="ch007.xhtml">installing Python and setting up a programming environment on an Ubuntu 16.04 server</a>, which is especially useful when working on development teams.</p>
+<p>With your local machine ready for software development, you can continue to learn more about coding in Python by following “<a href="ch011.xhtml">Understanding Data Types in Python 3</a>” and “<a href="ch017.xhtml">How To Use Variables in Python 3</a>”.</p>
+</section>
+</section>
+</body>
+</html>
+

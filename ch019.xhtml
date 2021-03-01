@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Do Math with Operators</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-do-math-with-operators" class="level1">
+<h1>How To Do Math with Operators</h1>
+<p>Numbers are extremely common in programming. They are used to represent things like screen size dimensions, geographic locations, money and points, the amount of time that passes in a video, positions of game avatars, and colors through assigning numeric codes.</p>
+<p>Being able to effectively perform mathematical operations in programming is an important skill to develop because of how frequently you’ll be working with numbers. Though a high-level understanding of mathematics can certainly help you become a better programmer, it is not a prerequisite. If you don’t have a background in mathematics, try to think of math as a tool to accomplish what you would like to achieve, and as a way to improve your logical thinking.</p>
+<p>We’ll be working with two of Python’s most used numeric data types, <strong>integers</strong> and <strong>floats</strong>:</p>
+<ul>
+<li><a href="ch011.xhtml#integers">Integers</a> are whole numbers that can be positive, negative, or 0 (…, <code>-1</code>, <code>0</code>, <code>1</code>, …).</li>
+<li><a href="ch011.xhtml#floating-point-numbers">Floats</a> are real numbers, they contain a decimal point (as in <code>9.0</code> or <code>-2.25</code>).</li>
+</ul>
+<p>This tutorial will go over operators that can be used with number data types in Python.</p>
+<section id="operators" class="level2">
+<h2>Operators</h2>
+<p>An <strong>operator</strong> is a symbol or function that indicates an operation. For example, in math the plus sign or + is the operator that indicates addition.</p>
+<p>In Python, we will see some familiar operators that are brought over from math, but other operators we will use are specific to computer programming.</p>
+<p>Here is a quick reference table of math-related operators in Python. We’ll be covering all of the following operations in this tutorial.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>What it returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="ch019.xhtml#addition-and-subtraction">x + y</a></td>
+<td>Sum of <code>x</code> and <code>y</code></td>
+</tr>
+<tr class="even">
+<td><a href="ch019.xhtml#addition-and-subtraction">x - y</a></td>
+<td>Difference of <code>x</code> and <code>y</code></td>
+</tr>
+<tr class="odd">
+<td><a href="ch019.xhtml#unary-arithmetic-operations">-x</a></td>
+<td>Changed sign of <code>x</code></td>
+</tr>
+<tr class="even">
+<td><a href="ch019.xhtml#unary-arithmetic-operations">+x</a></td>
+<td>Identity of <code>x</code></td>
+</tr>
+<tr class="odd">
+<td><a href="ch019.xhtml#multiplication-and-division">x * y</a></td>
+<td>Product of <code>x</code> and <code>y</code></td>
+</tr>
+<tr class="even">
+<td><a href="ch019.xhtml#multiplication-and-division">x / y</a></td>
+<td>Quotient of x and y</td>
+</tr>
+<tr class="odd">
+<td><a href="ch019.xhtml#multiplication-and-division">x // y</a></td>
+<td>Quotient from floor division of <code>x</code> and <code>y</code></td>
+</tr>
+<tr class="even">
+<td><a href="ch019.xhtml#modulo">x % y</a></td>
+<td>Remainder of <code>x / y</code></td>
+</tr>
+<tr class="odd">
+<td><a href="ch019.xhtml#power">x ** y</a></td>
+<td><code>x</code> to the <code>y</code> power</td>
+</tr>
+</tbody>
+</table>
+<p>We’ll also be covering <a href="ch019.xhtml#assignment-operators">compound assignment operators</a>, including <code>+=</code> and <code>*=</code>, that combine an arithmetic operator with the <code>=</code> operator.</p>
+</section>
+<section id="addition-and-subtraction" class="level2">
+<h2>Addition and Subtraction</h2>
+<p>In Python, addition and subtraction operators perform just as they do in mathematics. In fact, you can use the Python programming language as a calculator.</p>
+<p>Let’s look at some examples, starting with integers:</p>
+<figure class="code">
+<pre class="python"><code>print(1 + 5)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>6</code></pre>
+</figure>
+<p>Instead of passing integers directly into the <code>print</code> statement, we can initialize variables to stand for integer values:</p>
+<figure class="code">
+<pre class="python"><code>a = 88
+b = 103
+
+print(a + b)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>191</code></pre>
+</figure>
+<p>Because integers can be both positive and negative numbers (and 0 too), we can add a negative number with a positive number:</p>
+<figure class="code">
+<pre class="python"><code>c = -36
+d = 25
+
+print(c + d)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>-11</code></pre>
+</figure>
+<p>Addition will behave similarly with floats:</p>
+<figure class="code">
+<pre class="python"><code>e = 5.5
+f = 2.5
+
+print(e + f)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>8.0</code></pre>
+</figure>
+<p>Because we added two floats together, Python returned a float value with a decimal place.</p>
+<p>The syntax for subtraction is the same as for addition, except you’ll change your operator from the plus sign (<code>+</code>) to the minus sign (<code>-</code>):</p>
+<figure class="code">
+<pre class="python"><code>g = 75.67
+h = 32
+
+print(g - h)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>43.67</code></pre>
+</figure>
+<p>Here, we subtracted an integer from a float. Python will return a float if at least one of the numbers involved in an equation is a float.</p>
+</section>
+<section id="unary-arithmetic-operations" class="level2">
+<h2>Unary Arithmetic Operations</h2>
+<p>A unary mathematical expression consists of only one component or element, and in Python the plus and minus signs can be used as a single element paired with a value to return the value’s identity (<code>+</code>), or change the sign of the value (<code>-</code>).</p>
+<p>Though not commonly used, the plus sign indicates the identity of the value. We can use the plus sign with positive values:</p>
+<figure class="code">
+<pre class="python"><code>i = 3.3
+print(+i)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>3.3</code></pre>
+</figure>
+<p>When we use the plus sign with a negative value, it will also return the identity of that value, and in this case it would be a negative value:</p>
+<figure class="code">
+<pre class="python"><code>j = -19
+print(+j)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>-19</code></pre>
+</figure>
+<p>With a negative value the plus sign returns the same negative value.</p>
+<p>The minus sign, alternatively, changes the sign of a value. So, when we pass a positive value we’ll find that the minus sign before the value will return a negative value:</p>
+<figure class="code">
+<pre class="python"><code>i = 3.3
+print(-i)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>-3.3</code></pre>
+</figure>
+<p>Alternatively, when we use the minus sign unary operator with a negative value, a positive value will be returned:</p>
+<figure class="code">
+<pre class="python"><code>j = -19
+print(-j)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>19</code></pre>
+</figure>
+<p>The unary arithmetic operations indicated by the plus sign and minus sign will return either the value’s identity in the case of <code>+i</code>, or the opposite sign of the value as in <code>-i</code>.</p>
+</section>
+<section id="multiplication-and-division" class="level2">
+<h2>Multiplication and Division</h2>
+<p>Like addition and subtraction, multiplication and division will look very similar to how they do in mathematics. The sign we’ll use in Python for multiplication is <code>*</code> and the sign we’ll use for division is <code>/</code>.</p>
+<p>Here’s an example of doing multiplication in Python with two float values:</p>
+<figure class="code">
+<pre class="python"><code>k = 100.1
+l = 10.1
+
+print(k * l)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>1011.0099999999999</code></pre>
+</figure>
+<p>When you divide in Python 3, your quotient will always be returned as a float, even if you use two integers:</p>
+<figure class="code">
+<pre class="python"><code>m = 80
+n = 5
+
+print(m / n)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>16.0</code></pre>
+</figure>
+<p>This is one of the <a href="ch002.xhtml#division-with-integers">major changes between Python 2 and Python 3</a>. Python 3’s approach provides a fractional answer so that when you use <code>/</code> to divide <code>11</code> by <code>2</code> the quotient of <code>5.5</code> will be returned. In Python 2 the quotient returned for the expression <code>11 / 2</code> is <code>5</code>.</p>
+<p>Python 2’s <code>/</code> operator performs <strong>floor division</strong>, where for the quotient <code>x</code> the number returned is the largest integer less than or equal to <code>x</code>. If you run the above example of <code>print(80 / 5)</code> with Python 2 instead of Python 3, you’ll receive <code>16</code> as the output without the decimal place.</p>
+<p>In Python 3, you can use <code>//</code> to perform floor division. The expression <code>100 // 40</code> will return the value of <code>2</code>. Floor division is useful when you need a quotient to be in whole numbers.</p>
+</section>
+<section id="modulo" class="level2">
+<h2>Modulo</h2>
+<p>The <code>%</code> operator is the modulo, which returns the remainder rather than the quotient after division. This is useful for finding numbers that are multiples of the same number, for example.</p>
+<p>Let’s look at the modulo in action:</p>
+<figure class="code">
+<pre class="python"><code>o = 85
+p = 15
+
+print(o % p)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>10</code></pre>
+</figure>
+<p>To break this down, 85 divided by 15 returns the quotient of 5 with a remainder of 10. The value <code>10</code> is what is returned here because the modulo operator returns the remainder of a division expression.</p>
+<p>If we use two floats with the modulo, a float value will be returned for the remainder:</p>
+<figure class="code">
+<pre class="python"><code>q = 36.0
+r = 6.0
+
+print(o % p)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>0.0</code></pre>
+</figure>
+<p>In the case of 36.0 divided by 6.0, there is no remainder, so the value of <code>0.0</code> is returned.</p>
+</section>
+<section id="power" class="level2">
+<h2>Power</h2>
+<p>The <code>**</code> operator in Python is used to raise the number on the left to the power of the exponent of the right. That is, in the expression <code>5 ** 3</code>, 5 is being raised to the 3rd power. In mathematics, we often see this expression rendered as 5³, and what is really going on is 5 is being multiplied by itself 3 times. In Python, we would get the same result of <code>125</code> by running either <code>5 ** 3</code> or <code>5 * 5 * 5</code>.</p>
+<p>Let’s look at an example with variables:</p>
+<figure class="code">
+<pre class="python"><code>s = 52.25
+t = 7
+
+print(s ** t)</code></pre>
+</figure>
+<figure class="code">
+<pre class="python"><code>1063173305051.292</code></pre>
+</figure>
+<p>Raising the float <code>52.25</code> to the power of <code>7</code> through the <code>**</code> operator results in a large float value returned.</p>
+</section>
+<section id="operator-precedence" class="level2">
+<h2>Operator Precedence</h2>
+<p>In Python, as in mathematics, we need to keep in mind that operators will be evaluated in order of precedence, not from left to right or right to left.</p>
+<p>If we look at the following expression:</p>
+<figure class="code">
+<pre class="python"><code>u = 10 + 10 * 5</code></pre>
+</figure>
+<p>We may read it left to right, but remember that multiplication will be done first, so if we call <code>print(u)</code>, we will receive the following value:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>60</code></pre>
+</figure>
+<p>This is because <code>10 * 5</code> evaluates to <code>50</code>, and then we add <code>10</code> to return <code>60</code> as the final result.</p>
+<p>If instead we would like to add the value <code>10</code> to <code>10</code>, then multiply that sum by <code>5</code>, we can use parentheses just like we would in math:</p>
+<figure class="code">
+<pre class="python"><code>u = (10 + 10) * 5
+print(u)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>100</code></pre>
+</figure>
+<p>One way to remember the order of operation is through the acronym <strong>PEMDAS</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Order</th>
+<th style="text-align: center;">Letter</th>
+<th>Stands for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: center;"><strong>P</strong></td>
+<td><strong>P</strong>arentheses</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: center;"><strong>E</strong></td>
+<td><strong>E</strong>xponent</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: center;"><strong>M</strong></td>
+<td><strong>M</strong>ultiplication</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td style="text-align: center;"><strong>D</strong></td>
+<td><strong>D</strong>ivision</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td style="text-align: center;"><strong>A</strong></td>
+<td><strong>A</strong>ddition</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td style="text-align: center;"><strong>S</strong></td>
+<td><strong>S</strong>ubtraction</td>
+</tr>
+</tbody>
+</table>
+<p>You may be familiar with another acronym for the order of operations, such as <strong>BEDMAS</strong> or <strong>BODMAS</strong>. Whatever acronym works best for you, try to keep it in mind when performing math operations in Python so that the results that you expect are returned.</p>
+</section>
+<section id="assignment-operators" class="level2">
+<h2>Assignment Operators</h2>
+<p>The most common assignment operator is one you have already used: the equals sign <code>=</code>. The <code>=</code> assignment operator assigns the value on the right to a variable on the left. For example, <code>v = 23</code> assigns the value of the integer <code>23</code> to the variable <code>v</code>.</p>
+<p>When programming, it is common to use compound assignment operators that perform an operation on a variable’s value and then assign the resulting new value to that variable. These compound operators combine an arithmetic operator with the <code>=</code> operator, so for addition we’ll combine <code>+</code> with <code>=</code> to get the compound operator <code>+=</code>. Let’s see what that looks like:</p>
+<figure class="code">
+<pre class="python"><code>w = 5
+w += 1
+print(w)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>6</code></pre>
+</figure>
+<p>First, we set the variable <code>w</code> equal to the value of <code>5</code>, then we used the <code>+=</code> compound assignment operator to add the right number to the value of the left variable <em>and then</em> assign the result to <code>w</code>.</p>
+<p>Compound assignment operators are used frequently in the case of <strong><a href="ch031.xhtml">for loops</a></strong>, which you’ll use when you want to repeat a process several times:</p>
+<figure class="code">
+<pre class="python"><code>for x in range (0, 7):
+    x *= 2
+    print(x)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>0
+2
+4
+6
+8
+10
+12</code></pre>
+</figure>
+<p>With the for loop, we were able to automate the process of the <code>*=</code> operator that multiplied the variable <code>w</code> by the number <code>2</code> and then assigned the result in the variable <code>w</code> for the next iteration of the for loop.</p>
+<p>Python has a compound assignment operator for each of the arithmetic operators discussed in this tutorial:</p>
+<figure class="code">
+<pre class="python"><code>y += 1          # add then assign value
+
+y -= 1          # subtract then assign value
+
+y *= 2          # multiply then assign value
+
+y /= 3          # divide then assign value
+
+y // = 5        # floor divide then assign value
+
+y **= 2         # increase to the power of then assign value
+
+y %= 3          # return remainder then assign value</code></pre>
+</figure>
+<p>Compound assignment operators can be useful when things need to be incrementally increased or decreased, or when you need to automate certain processes in your program.</p>
+</section>
+<section id="conclusion-17" class="level2">
+<h2>Conclusion</h2>
+<p>This tutorial covered many of the operators you’ll use with the integer and float numeric data types. If you would like to keep reading about numbers in Python, you can continue onto <a href="ch020.xhtml">Built-in Python 3 Functions for Working with Numbers</a>.</p>
+<p>To learn more about other data types, take a look at <a href="ch011.xhtml">Understanding Data Types in Python 3</a>, and learn about how to convert data types by reading <a href="ch016.xhtml">How To Convert Data Types in Python 3</a>.</p>
+</section>
+</section>
+</body>
+</html>
+

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Write Comments</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-write-comments" class="level1">
+<h1>How To Write Comments</h1>
+<p>Comments are lines that exist in computer programs that are ignored by compilers and interpreters. Including comments in programs makes code more readable for humans as it provides some information or explanation about what each part of a program is doing.</p>
+<p>Depending on the purpose of your program, comments can serve as notes to yourself or reminders, or they can be written with the intention of other programmers being able to understand what your code is doing.</p>
+<p>In general, it is a good idea to write comments while you are writing or updating a program as it is easy to forget your thought process later on, and comments written later may be less useful in the long term.</p>
+<section id="comment-syntax" class="level2">
+<h2>Comment Syntax</h2>
+<p>Comments in Python begin with a hash mark (<code>#</code>) and whitespace character and continue to the end of the line.</p>
+<p>Generally, comments will look something like this:</p>
+<figure class="code">
+<pre class="python"><code># This is a comment</code></pre>
+</figure>
+<p>Because comments do not execute, when you run a program you will not see any indication of the comment there. Comments are in the source code for humans to read, not for computers to execute.</p>
+<p>In a “Hello, World!” program, a comment may look like this:</p>
+<figure class="code">
+<figcaption>
+hello.py
+</figcaption>
+<pre class="python"><code># Print “Hello, World!” to console
+print(&quot;Hello, World!&quot;)</code></pre>
+</figure>
+<p>In a <a href="ch031.xhtml"><code>for</code> loop</a> that iterates over a <a href="ch022.xhtml">list</a>, comments may look like this:</p>
+<figure class="code">
+<figcaption>
+sharks.py
+</figcaption>
+<pre class="python"><code># Define sharks variable as a list of strings
+sharks = [&#39;hammerhead&#39;, &#39;great white&#39;, &#39;dogfish&#39;, &#39;frilled&#39;, &#39;bullhead&#39;, &#39;requiem&#39;]
+
+# For loop that iterates over sharks list and prints each string item
+for shark in sharks:
+   print(shark)</code></pre>
+</figure>
+<p>Comments should be made at the same indent as the code it is commenting. That is, a <a href="ch033.xhtml">function definition</a> with no indent would have a comment with no indent, and each indent level following would have comments that are aligned with the code it is commenting.</p>
+<p>For example, here is how the <code>again()</code> function from the <a href="https://www.digitalocean.com/community/tutorials/how-to-make-a-simple-calculator-program-in-python-3">How To Make a Simple Calculator Program in Python 3 tutorial</a> is commented, with comments following each indent level of the code:</p>
+<figure class="code">
+<figcaption>
+calculator.py
+</figcaption>
+<pre class="python"><code>...
+# Define again() function to ask user if they want to use the calculator again
+def again():
+
+    # Take input from user
+    calc_again = input(&#39;&#39;&#39;
+Do you want to calculate again?
+Please type Y for YES or N for NO.
+&#39;&#39;&#39;)
+
+    # If user types Y, run the calculate() function
+    if calc_again == &#39;Y&#39;:
+        calculate()
+
+    # If user types N, say good-bye to the user and end the program
+    elif calc_again == &#39;N&#39;:
+        print(&#39;See you later.&#39;)
+
+    # If user types another key, run the function again
+    else:
+        again()</code></pre>
+</figure>
+<p>Comments are made to help programmers, whether it is the original programmer or someone else using or collaborating on the project. If comments cannot be properly maintained and updated along with the code base, it is better to not include a comment rather than write a comment that contradicts or will contradict the code.</p>
+<p>When commenting code, you should be looking to answer the <em>why</em> behind the code as opposed to the <em>what</em> or <em>how</em>. Unless the code is particularly tricky, looking at the code can generally tell what the code is doing or how it is doing it.</p>
+</section>
+<section id="block-comments" class="level2">
+<h2>Block Comments</h2>
+<p>Block comments can be used to explain more complicated code or code that you don’t expect the reader to be familiar with. These longer-form comments apply to some or all of the code that follows, and are also indented at the same level as the code.</p>
+<p>In block comments, each line begins with the hash mark and a single space. If you need to use more than one paragraph, they should be separated by a line that contains a single hash mark.</p>
+<p>Here is an example of a block comment that defines what is happening in the <code>main()</code> function defined below:</p>
+<figure class="code">
+<pre class="python"><code># The main function will parse arguments via the parser variable.  These
+# arguments will be defined by the user on the console.  This will pass
+# the word argument the user wants to parse along with the filename the
+# user wants to use, and also provide help text if the user does not
+# correctly pass the arguments.
+
+def main():
+  parser = argparse.ArgumentParser()
+  parser.add_argument(
+      &quot;word&quot;,
+      help=&quot;the word to be searched for in the text file.&quot;
+  )
+  parser.add_argument(
+      &quot;filename&quot;,
+      help=&quot;the path to the text file to be searched through&quot;
+  )
+...</code></pre>
+</figure>
+<p>Block comments are typically used when operations are less straightforward and are therefore demanding of a thorough explanation. You should try to avoid over-commenting the code and should tend to trust other programmers to understand Python unless you are writing for a particular audience.</p>
+</section>
+<section id="inline-comments" class="level2">
+<h2>Inline Comments</h2>
+<p>Inline comments occur on the same line of a statement, following the code itself. Like other comments, they begin with a hash mark and a single whitespace character.</p>
+<p>Generally, inline comments look like this:</p>
+<figure class="code">
+<pre class="python"><code>[code]  # Inline comment about the code</code></pre>
+</figure>
+<p>Inline comments should be used sparingly, but can be effective for explaining tricky or non-obvious parts of code. They can also be useful if you think you may not remember a line of the code you are writing in the future, or if you are collaborating with someone who you know may not be familiar with all aspects of the code.</p>
+<p>For example, if you don’t use a lot of <a href="ch019.xhtml">math</a> in your Python programs, you or your collaborators may not know that the following creates a complex number, so you may want to include an inline comment about that:</p>
+<figure class="code">
+<pre class="python"><code>z = 2.5 + 3j  # Create a complex number</code></pre>
+</figure>
+<p>Inline comments can also be used to explain the reason behind doing something, or some extra information, as in:</p>
+<figure class="code">
+<pre class="python"><code>x = 8  # Initialize x with an arbitrary number</code></pre>
+</figure>
+<p>Comments that are made in line should be used only when necessary and when they can provide helpful guidance for the person reading the program.</p>
+</section>
+<section id="commenting-out-code-for-testing" class="level2">
+<h2>Commenting Out Code for Testing</h2>
+<p>In addition to using comments as a way to document code, the hash mark can also be used to comment out code that you don’t want to execute while you are testing or debugging a program you are currently creating. That is, when you experience errors after implementing new lines of code, you may want to comment a few of them out to see if you can troubleshoot the precise issue.</p>
+<p>Using the hash mark can also allow you to try alternatives while you’re determining how to set up your code. For example, you may be deciding between using a <a href="ch030.xhtml"><code>while</code> loop</a> or a <code>for</code> loop in a Python game, and can comment out one or the other while testing and determining which one may be best:</p>
+<figure class="code">
+<figcaption>
+guess.py
+</figcaption>
+<pre class="python"><code>import random
+
+number = random.randint(1, 25)
+
+# number_of_guesses = 0
+
+for i in range(5):
+# while number_of_guesses &lt; 5:
+    print(&#39;Guess a number between 1 and 25:&#39;)
+    guess = input()
+    guess = int(guess)
+
+    # number_of_guesses = number_of_guesses + 1
+
+    if guess &lt; number:
+        print(&#39;Your guess is too low&#39;)
+
+    if guess &gt; number:
+        print(&#39;Your guess is too high&#39;)
+
+    if guess == number:
+        break
+
+if guess == number:
+    print(&#39;You guessed the number!&#39;)
+
+else:
+    print(&#39;You did not guess the number. The number was &#39; + str(number))
+
+&lt;figure class=&quot;code&quot;&gt;</code></pre>
+</figure>
+<p>Commenting out code with the hash mark can allow you to try out different programming methods as well as help you find the source of an error through systematically commenting out and running parts of a program.</p>
+</section>
+<section id="conclusion-8" class="level2">
+<h2>Conclusion</h2>
+<p>Using comments within your Python programs helps to make your programs more readable for humans, including your future self. Including appropriate comments that are relevant and useful can make it easier for others to collaborate with you on programming projects and make the value of your code more obvious.</p>
+<p>From here, you may want to read about Python’s <a href="https://www.python.org/dev/peps/pep-0257/">Docstrings in PEP 257</a> to provide you with more resources to properly document your Python projects.</p>
+</section>
+</section>
+</body>
+</html>
+

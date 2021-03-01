@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>An Introduction to String Functions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="an-introduction-to-string-functions" class="level1">
+<h1>An Introduction to String Functions</h1>
+<p>Python has several built-in functions associated with the <a href="ch012.xhtml">string data type</a>. These functions let us easily modify and manipulate strings. We can think of functions as being actions that we perform on elements of our code. Built-in functions are those that are defined in the Python programming language and are readily available for us to use.</p>
+<p>In this tutorial, we’ll go over several different functions that we can use to work with strings in Python 3.</p>
+<section id="making-strings-upper-and-lower-case" class="level2">
+<h2>Making Strings Upper and Lower Case</h2>
+<p>The functions <code>str.upper()</code> and <code>str.lower()</code> will return a string with all the letters of an original string converted to upper- or lower-case letters. Because strings are immutable data types, the returned string will be a new string. Any characters in the string that are not letters will not be changed.</p>
+<p>Let’s convert the string <code>Sammy Shark</code> to be all upper case:</p>
+<figure class="code">
+<pre class="python"><code>ss = &quot;Sammy Shark&quot;
+print(ss.upper())</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>SAMMY SHARK</code></pre>
+</figure>
+<p>Now, let’s convert the string to be all lower case:</p>
+<figure class="code">
+<pre class="python"><code>print(ss.lower())</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>sammy shark</code></pre>
+</figure>
+<p>The <code>str.upper()</code> and <code>str.lower()</code> functions make it easier to evaluate and compare strings by making case consistent throughout. That way if a user writes their name all lower case, we can still determine whether their name is in our database by checking it against an all upper-case version, for example.</p>
+</section>
+<section id="boolean-methods" class="level2">
+<h2>Boolean Methods</h2>
+<p>Python has some string methods that will evaluate to a <a href="ch021.xhtml">Boolean value</a>. These methods are useful when we are creating forms for users to fill in, for example. If we are asking for a post code we will only want to accept a numeric string, but when we are asking for a name, we will only want to accept an alphabetic string.</p>
+<p>There are a number of string methods that will return Boolean values:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th><code>True</code> if</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>str.isalnum()</code></td>
+<td>String consists of only alphanumeric characters (no symbols)</td>
+</tr>
+<tr class="even">
+<td><code>str.isalpha()</code></td>
+<td>String consists of only alphabetic characters (no symbols)</td>
+</tr>
+<tr class="odd">
+<td><code>str.islower()</code></td>
+<td>String’s alphabetic characters are all lower case</td>
+</tr>
+<tr class="even">
+<td><code>str.isnumeric()</code></td>
+<td>String consists of only numeric characters</td>
+</tr>
+<tr class="odd">
+<td><code>str.isspace()</code></td>
+<td>String consists of only whitespace characters</td>
+</tr>
+<tr class="even">
+<td><code>str.istitle()</code></td>
+<td>String is in title case</td>
+</tr>
+<tr class="odd">
+<td><code>str.isupper()</code></td>
+<td>String’s alphabetic characters are all upper case</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s look at a couple of these in action:</p>
+<figure class="code">
+<pre class="python"><code>number = &quot;5&quot;
+letters = &quot;abcdef&quot;
+
+print(number.isnumeric())
+print(letters.isnumeric())</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>True
+False</code></pre>
+</figure>
+<p>Using the <code>str.isnumeric()</code> method on the string <code>5</code> returns a value of <code>True</code>, while using the same method on the string <code>abcdef</code> returns a value of <code>False</code>.</p>
+<p>Similarly, we can query whether a string’s alphabetic characters are in title case, upper case, or lower case. Let’s create a few strings:</p>
+<figure class="code">
+<pre class="python"><code>movie = &quot;2001: A SAMMY ODYSSEY&quot;
+book = &quot;A Thousand Splendid Sharks&quot;
+poem = &quot;sammy lived in a pretty how town&quot;</code></pre>
+</figure>
+<p>Now let’s try the Boolean methods that check for case:</p>
+<figure class="code">
+<pre class="python"><code>print(movie.islower())
+print(movie.isupper())</code></pre>
+</figure>
+<figure class="code">
+<pre class="python"><code>print(book.istitle())
+print(book.isupper())</code></pre>
+</figure>
+<figure class="code">
+<pre class="python"><code>print(poem.istitle())
+print(poem.islower())</code></pre>
+</figure>
+<p>Now we can run these small programs and see the output:</p>
+<figure class="code">
+<figcaption>
+Output of movie string
+</figcaption>
+<pre><code>False
+True</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output of book string
+</figcaption>
+<pre><code>True
+False</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output of poem string
+</figcaption>
+<pre><code>False
+True</code></pre>
+</figure>
+<p>Checking whether characters are lower case, upper case, or title case, can help us to sort our data appropriately, as well as provide us with the opportunity to standardize data we collect by checking and then modifying strings as needed.</p>
+<p>Boolean string methods are useful when we want to check whether something a user enters fits within given parameters.</p>
+</section>
+<section id="determining-string-length" class="level2">
+<h2>Determining String Length</h2>
+<p>The string method <code>len()</code> returns the number of characters in a string. This method is useful for when you need to enforce minimum or maximum password lengths, for example, or to truncate larger strings to be within certain limits for use as abbreviations.</p>
+<p>To demonstrate this method, we’ll find the length of a sentence-long string:</p>
+<figure class="code">
+<pre class="python"><code>open_source = &quot;Sammy contributes to open source.&quot;
+print(len(open_source))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>33</code></pre>
+</figure>
+<p>We set the variable <code>open_source</code> equal to the string <code>&quot;Sammy contributes to open source.&quot;</code> and then we passed that variable to the <code>len()</code> method with <code>len(open_source)</code>. We then passed the method into the <code>print()</code> method so that we could see the output on the screen from our program.</p>
+<p>Keep in mind that any character bound by single or double quotation marks — including letters, numbers, whitespace characters, and symbols — will be counted by the <code>len()</code> method.</p>
+</section>
+<section id="join-split-and-replace-methods" class="level2">
+<h2>join(), split(), and replace() Methods</h2>
+<p>The <code>str.join()</code>, <code>str.split()</code>, and <code>str.replace()</code> methods are a few additional ways to manipulate strings in Python.</p>
+<p>The <code>str.join()</code> method will concatenate two strings, but in a way that passes one string through another.</p>
+<p>Let’s create a string:</p>
+<figure class="code">
+<pre class="python"><code>balloon = &quot;Sammy has a balloon.&quot;</code></pre>
+</figure>
+<p>Now, let’s use the <code>str.join()</code> method to add whitespace to that string, which we can do like so:</p>
+<figure class="code">
+<pre class="python"><code>&quot; &quot;.join(balloon)</code></pre>
+</figure>
+<p>If we print this out:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot; &quot;.join(balloon))</code></pre>
+</figure>
+<p>We will see that in the new string that is returned there is added space throughout the first string:</p>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>S a m m y   h a s   a   b a l l o o n .</code></pre>
+</figure>
+<p>We can also use the <code>str.join()</code> method to return a string that is a reversal from the original string:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;&quot;.join(reversed(balloon)))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>.noollab a sah ymmaS</code></pre>
+</figure>
+<p>We did not want to add any part of another string to the first string, so we kept the quotation marks touching with no space in between.</p>
+<p>The <code>str.join()</code> method is also useful to combine a list of strings into a new single string.</p>
+<p>Let’s create a comma-separated string from a list of strings:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;,&quot;.join([&quot;sharks&quot;, &quot;crustaceans&quot;, &quot;plankton&quot;]))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>sharks,crustaceans,plankton</code></pre>
+</figure>
+<p>If we want to add a comma and a space between string values in our new string, we can simply rewrite our expression with a whitespace after the comma: <code>&quot;, &quot;.join([&quot;sharks&quot;, &quot;crustaceans&quot;, &quot;plankton&quot;])</code>.</p>
+<p>Just as we can join strings together, we can also split strings up. To do this, we will use the <code>str.split()</code> method:</p>
+<figure class="code">
+<pre class="python"><code>print(balloon.split())</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>[&#39;Sammy&#39;, &#39;has&#39;, &#39;a&#39;, &#39;balloon.&#39;]</code></pre>
+</figure>
+<p>The <code>str.split()</code> method returns a list of strings that are separated by whitespace if no other parameter is given.</p>
+<p>We can also use <code>str.split()</code> to remove certain parts of an original string. For example, let’s remove the letter <code>a</code> from the string:</p>
+<figure class="code">
+<pre class="python"><code>print(balloon.split(&quot;a&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>[&#39;S&#39;, &#39;mmy h&#39;, &#39;s &#39;, &#39; b&#39;, &#39;lloon.&#39;]</code></pre>
+</figure>
+<p>Now the letter <code>a</code> has been removed and the strings have been separated where each instance of the letter <code>a</code> had been, with whitespace retained.</p>
+<p>The <code>str.replace()</code> method can take an original string and return an updated string with some replacement.</p>
+<p>Let’s say that the balloon that Sammy had is lost. Since Sammy no longer has this balloon, we will change the substring <code>&quot;has&quot;</code> from the original string <code>balloon</code> to <code>&quot;had&quot;</code> in a new string:</p>
+<figure class="code">
+<pre class="python"><code>print(balloon.replace(&quot;has&quot;,&quot;had&quot;))</code></pre>
+</figure>
+<p>Within the parentheses, the first substring is what we want to be replaced, and the second substring is what we are replacing that first substring with. Our output will look like this:</p>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>Sammy had a balloon.</code></pre>
+</figure>
+<p>Using the string methods <code>str.join()</code>, <code>str.split()</code>, and <code>str.replace()</code> will provide you with greater control to manipulate strings in Python.</p>
+</section>
+<section id="conclusion-12" class="level2">
+<h2>Conclusion</h2>
+<p>This tutorial went through some of the common built-in methods for the string data type that you can use to work with and manipulate strings in your Python programs.</p>
+<p>You can learn more about other data types in “<a href="ch011.xhtml">Understanding Data Types</a>,” read more about strings in “<a href="ch012.xhtml">An Introduction to Working with Strings</a>,” and learn about changing the way strings look in “<a href="ch013.xhtml">How To Format Text in Python 3</a>.”</p>
+</section>
+</section>
+</body>
+</html>
+

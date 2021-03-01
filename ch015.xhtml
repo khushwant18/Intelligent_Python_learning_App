@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Index and Slice Strings</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-index-and-slice-strings" class="level1">
+<h1>How To Index and Slice Strings</h1>
+<p>The Python string data type is a sequence made up of one or more individual characters that could consist of letters, numbers, whitespace characters, or symbols. Because a string is a sequence, it can be accessed in the same ways that other sequence-based data types are, through indexing and slicing.</p>
+<p>This tutorial will guide you through accessing strings through indexing, slicing them through their character sequences, and go over some counting and character location methods.</p>
+<section id="how-strings-are-indexed" class="level2">
+<h2>How Strings are Indexed</h2>
+<p>Like the <a href="ch022.xhtml">list data type</a> that has items that correspond to an index number, each of a string’s characters also correspond to an index number, starting with the index number 0.</p>
+<p>For the string <code>Sammy Shark!</code> the index breakdown looks like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>S</th>
+<th>a</th>
+<th>m</th>
+<th>m</th>
+<th>y</th>
+<th></th>
+<th>S</th>
+<th>h</th>
+<th>a</th>
+<th>r</th>
+<th>k</th>
+<th>!</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the first <code>S</code> starts at index 0, and the string ends at index 11 with the <code>!</code> symbol.</p>
+<p>We also notice that the whitespace character between <code>Sammy</code> and <code>Shark</code> also corresponds with its own index number. In this case, the index number associated with the whitespace is 5.</p>
+<p>The exclamation point (<code>!</code>) also has an index number associated with it. Any other symbol or punctuation mark, such as <code>*#$&amp;.;?</code>, is also a character and would be associated with its own index number.</p>
+<p>The fact that each character in a Python string has a corresponding index number allows us to access and manipulate strings in the same ways we can with other sequential data types.</p>
+</section>
+<section id="accessing-characters-by-positive-index-number" class="level2">
+<h2>Accessing Characters by Positive Index Number</h2>
+<p>By referencing index numbers, we can isolate one of the characters in a string. We do this by putting the index numbers in square brackets. Let’s declare a string, print it, and call the index number in square brackets:</p>
+<figure class="code">
+<pre class="python"><code>ss = &quot;Sammy Shark!&quot;
+print(ss[4])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>y</code></pre>
+</figure>
+<p>When we refer to a particular index number of a string, Python returns the character that is in that position. Since the letter <code>y</code> is at index number 4 of the string <code>ss = &quot;Sammy Shark!&quot;</code>, when we print <code>ss[4]</code> we receive <code>y</code> as the output.</p>
+<p>Index numbers allow us to access specific characters within a string.</p>
+</section>
+<section id="accessing-characters-by-negative-index-number" class="level2">
+<h2>Accessing Characters by Negative Index Number</h2>
+<p>If we have a long string and we want to pinpoint an item towards the end, we can also count backwards from the end of the string, starting at the index number <code>-1</code>.</p>
+<p>For the same string <code>Sammy Shark!</code> the negative index breakdown looks like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>S</th>
+<th>a</th>
+<th>m</th>
+<th>m</th>
+<th>y</th>
+<th></th>
+<th>S</th>
+<th>h</th>
+<th>a</th>
+<th>r</th>
+<th>k</th>
+<th>!</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-12</td>
+<td>-11</td>
+<td>-10</td>
+<td>-9</td>
+<td>-8</td>
+<td>-7</td>
+<td>-6</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>By using negative index numbers, we can print out the character <code>r</code>, by referring to its position at the -3 index, like so:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[-3])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>r</code></pre>
+</figure>
+<p>Using negative index numbers can be advantageous for isolating a single character towards the end of a long string.</p>
+</section>
+<section id="slicing-strings" class="level2">
+<h2>Slicing Strings</h2>
+<p>We can also call out a range of characters from the string. Say we would like to just print the word <code>Shark</code>. We can do so by creating a <strong>slice</strong>, which is a sequence of characters within an original string. With slices, we can call multiple character values by creating a range of index numbers separated by a colon <code>[x:y]</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[6:11])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Shark</code></pre>
+</figure>
+<p>When constructing a slice, as in <code>[6:11]</code>, the first index number is where the slice starts (inclusive), and the second index number is where the slice ends (exclusive), which is why in our example above the range has to be the index number that would occur just after the string ends.</p>
+<p>When slicing strings, we are creating a <strong>substring</strong>, which is essentially a string that exists within another string. When we call <code>ss[6:11]</code>, we are calling the substring <code>Shark</code> that exists within the string <code>Sammy Shark!</code>.</p>
+<p>If we want to include either end of a string, we can omit one of the numbers in the <code>string[n:n]</code> syntax. For example, if we want to print the first word of string <code>ss</code> — “Sammy” — we can do so by typing:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[:5])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy</code></pre>
+</figure>
+<p>We did this by omitting the index number before the colon in the slice syntax, and only including the index number after the colon, which refers to the end of the substring.</p>
+<p>To print a substring that starts in the middle of a string and prints to the end, we can do so by including only the index number before the colon, like so:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[7:])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>hark!</code></pre>
+</figure>
+<p>By including only the index number before the colon and leaving the second index number out of the syntax, the substring will go from the character of the index number called to the end of the string.</p>
+<p>You can also use negative index numbers to slice a string. As we went through before, negative index numbers of a string start at -1, and count down from there until we reach the beginning of the string. When using negative index numbers, we’ll start with the lower number first as it occurs earlier in the string.</p>
+<p>Let’s use two negative index numbers to slice the string <code>ss</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[-4:-1])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>ark</code></pre>
+</figure>
+<p>The substring “ark” is printed from the string “Sammy Shark!” because the character “a” occurs at the -4 index number position, and the character “k” occurs just before the -1 index number position.</p>
+</section>
+<section id="specifying-stride-while-slicing-strings" class="level2">
+<h2>Specifying Stride while Slicing Strings</h2>
+<p>String slicing can accept a third parameter in addition to two index numbers. The third parameter specifies the <strong>stride</strong>, which refers to how many characters to move forward after the first character is retrieved from the string. So far, we have omitted the stride parameter, and Python defaults to the stride of 1, so that every character between two index numbers is retrieved.</p>
+<p>Let’s look again at the example above that prints out the substring “Shark”:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[6:11])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Shark</code></pre>
+</figure>
+<p>We can obtain the same results by including a third parameter with a stride of 1:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[6:11:1])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Shark</code></pre>
+</figure>
+<p>So, a stride of 1 will take in every character between two index numbers of a slice. If we omit the stride parameter then Python will default with 1.</p>
+<p>If, instead, we increase the stride, we will see that characters are skipped:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[0:12:2])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>SmySak</code></pre>
+</figure>
+<p>Specifying the stride of 2 as the last parameter in the Python syntax <code>ss[0:12:2]</code> skips every other character. Let’s look at the characters that are printed in red:</p>
+<p><span class="highlight">S</span>a<span class="highlight">m</span>m<span class="highlight">y</span> <span class="highlight">S</span>h<span class="highlight">a</span>r<span class="highlight">k</span>!</p>
+<p>Note that the whitespace character at index number 5 is also skipped with a stride of 2 specified.</p>
+<p>If we use a larger number for our stride parameter, we will have a significantly smaller substring:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[0:12:4])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sya</code></pre>
+</figure>
+<p>Specifying the stride of 4 as the last parameter in the Python syntax <code>ss[0:12:4]</code> prints only every fourth character. Again, let’s look at the characters that are printed in red:</p>
+<p><span class="highlight">S</span>amm<span class="highlight">y</span> Sh<span class="highlight">a</span>rk!</p>
+<p>In this example the whitespace character is skipped as well.</p>
+<p>Since we are printing the whole string we can omit the two index numbers and keep the two colons within the syntax to achieve the same result:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[::4])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sya</code></pre>
+</figure>
+<p>Omitting the two index numbers and retaining colons will keep the whole string within range, while adding a final parameter for stride will specify the number of characters to skip.</p>
+<p>Additionally, you can indicate a negative numeric value for the stride, which we can use to print the original string in reverse order if we set the stride to -1:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[::-1])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>!krahS ymmaS</code></pre>
+</figure>
+<p>The two colons without specified parameter will include all the characters from the original string, a stride of 1 will include every character without skipping, and negating that stride will reverse the order of the characters.</p>
+<p>Let’s do this again but with a stride of -2:</p>
+<figure class="code">
+<pre class="python"><code>print(ss[::-2])</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>!rh ma</code></pre>
+</figure>
+<p>In this example, <code>ss[::-2]</code>, we are dealing with the entirety of the original string as no index numbers are included in the parameters, and reversing the string through the negative stride. Additionally, by having a stride of -2 we are skipping every other letter of the reversed string:</p>
+<p><span class="highlight">!</span>k<span class="highlight">r</span>a<span class="highlight">h</span>S<span class="highlight">[whitespace]</span>y<span class="highlight">m</span>m<span class="highlight">a</span>S</p>
+<p>The whitespace character is printed in this example.</p>
+<p>By specifying the third parameter of the Python slice syntax, you are indicating the stride of the substring that you are pulling from the original string.</p>
+</section>
+<section id="counting-methods" class="level2">
+<h2>Counting Methods</h2>
+<p>While we are thinking about the relevant index numbers that correspond to characters within strings, it is worth going through some of the methods that count strings or return index numbers. This can be useful for limiting the number of characters we would like to accept within a user-input form, or comparing strings. Like other sequential data types, strings can be counted through several methods.</p>
+<p>We’ll first look at the <code>len()</code> method which can get the length of any data type that is a sequence, whether ordered or unordered, including strings, lists, <a href="ch025.xhtml">tuples</a>, and <a href="ch026.xhtml">dictionaries</a>.</p>
+<p>Let’s print the length of the string <code>ss</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(len(ss))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>12</code></pre>
+</figure>
+<p>The length of the string “Sammy Shark!” is 12 characters long, including the whitespace character and the exclamation point symbol.</p>
+<p>Instead of using a variable, we can also pass a string right into the <code>len()</code> method:</p>
+<figure class="code">
+<pre class="python"><code>print(len(&quot;Let&#39;s print the length of this string.&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>38</code></pre>
+</figure>
+<p>The <code>len()</code> method counts the total number of characters within a string.</p>
+<p>If we want to count the number of times either one particular character or a sequence of characters shows up in a string, we can do so with the <code>str.count()</code> method. Let’s work with our string <code>ss = &quot;Sammy Shark!&quot;</code> and count the number of times the character “a” appears:</p>
+<figure class="code">
+<pre class="python"><code>print(ss.count(&quot;a&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>2</code></pre>
+</figure>
+<p>We can search for another character:</p>
+<figure class="code">
+<pre class="python"><code>print(ss.count(&quot;s&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>0</code></pre>
+</figure>
+<p>Though the letter “S” is in the string, it is important to keep in mind that each character is case-sensitive. If we want to search for all the letters in a string regardless of case, we can use the <code>str.lower()</code> method to convert the string to all lower-case first. You can read more about this method in “<a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-string-methods-in-python-3#making-strings-upper-and-lower-case">An Introduction to String Methods in Python 3</a>.”</p>
+<p>Let’s try <code>str.count()</code> with a sequence of characters:</p>
+<figure class="code">
+<pre class="python"><code>likes = &quot;Sammy likes to swim in the ocean, likes to spin up servers, and likes to smile.&quot;
+print(likes.count(&quot;likes&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>3</code></pre>
+</figure>
+<p>In the string <code>likes</code>, the character sequence that is equivalent to “likes” occurs 3 times in the original string.</p>
+<p>We can also find at what position a character or character sequence occurs in a string. We can do this with the <code>str.find()</code> method, and it will return the position of the character based on index number.</p>
+<p>We can check to see where the first “m” occurs in the string <code>ss</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(ss.find(&quot;m&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>2</code></pre>
+</figure>
+<p>The first character “m” occurs at the index position of 2 in the string “Sammy Shark!” We can review the index number positions of the string <code>ss</code> <a href="ch015.xhtml#how-strings-are-indexed">above</a>.</p>
+<p>Let’s check to see where the first “likes” character sequence occurs in the string <code>likes</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(likes.find(&quot;likes&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Ouput
+</figcaption>
+<pre><code>6</code></pre>
+</figure>
+<p>The first instance of the character sequence “likes” begins at index number position 6, which is where the character <code>l</code> of the sequence <code>likes</code> is positioned.</p>
+<p>What if we want to see where the second sequence of “likes” begins? We can do that by passing a second parameter to the <code>str.find()</code> method that will start at a particular index number. So, instead of starting at the beginning of the string, let’s start after the index number 9:</p>
+<figure class="code">
+<pre class="python"><code>print(likes.find(&quot;likes&quot;, 9))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>34</code></pre>
+</figure>
+<p>In this second example that begins at the index number of 9, the first occurrence of the character sequence “likes” begins at index number 34.</p>
+<p>Additionally, we can specify an end to the range as a third parameter. Like slicing, we can do so by counting backwards using a negative index number:</p>
+<figure class="code">
+<pre class="python"><code>print(likes.find(&quot;likes&quot;, 40, -6))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>64</code></pre>
+</figure>
+<p>This last example searches for the position of the sequence “likes” between the index numbers of 40 and -6. Since the final parameter entered is a negative number it will be counting from the end of the original string.</p>
+<p>The string methods of <code>len()</code>, <code>str.count()</code>, and <code>str.find()</code> can be used to determine length, counts of characters or character sequences, and index positions of characters or character sequences within strings.</p>
+</section>
+<section id="conclusion-13" class="level2">
+<h2>Conclusion</h2>
+<p>Being able to call specific index numbers of strings, or a particular slice of a string gives us greater flexibility when working with this data type. Because strings, like lists and tuples, are a sequence-based data type, it can be accessed through indexing and slicing.</p>
+<p>You can read more about <a href="ch013.xhtml">formatting strings</a> and <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-string-methods-in-python-3">string methods</a> to continue learning about strings.</p>
+</section>
+</section>
+</body>
+</html>
+

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Use String Formatters</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-use-string-formatters" class="level1">
+<h1>How To Use String Formatters</h1>
+<p>Python’s <code>str.format()</code> method of the <a href="https://www.digitalocean.com/community/tutorial_series/working-with-strings-in-python-3">string</a> class allows you to do <a href="ch017.xhtml">variable</a> substitutions and value formatting. This lets you <a href="ch012.xhtml#string-concatenation">concatenate</a> elements together within a string through positional formatting.</p>
+<p>This tutorial will guide you through some of the common uses of formatters in Python, which can help make your code and program more readable and user friendly.</p>
+<section id="using-formatters" class="level2">
+<h2>Using Formatters</h2>
+<p>Formatters work by putting in one or more <strong>replacement fields</strong> or placeholders — defined by a pair of curly braces <code>{}</code> — into a string and calling the <code>str.format()</code> method. You’ll pass into the method the value you want to concatenate with the string. This value will be passed through in the same place that your placeholder is positioned when you run the program.</p>
+<p>Let’s print out a string that uses a formatter:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy has {} balloons.&quot;.format(5))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy has 5 balloons.</code></pre>
+</figure>
+<p>In the example above, we constructed a string with a pair of curly braces as a placeholder:</p>
+<figure class="code">
+<pre class="python"><code>&quot;Sammy has {} balloons.&quot;</code></pre>
+</figure>
+<p>We then added the <code>str.format()</code> method and passed the value of the integer <code>5</code> to that method. This places the value of <code>5</code> into the string where the curly braces were:</p>
+<figure class="code">
+<pre><code>Sammy has 5 balloons.</code></pre>
+</figure>
+<p>We can also assign a variable to be equal to the value of a string that has formatter placeholders:</p>
+<figure class="code">
+<pre class="python"><code>open_string = &quot;Sammy loves {}.&quot;
+print(open_string.format(&quot;open source&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy loves open source.</code></pre>
+</figure>
+<p>In this second example, we concatenated the string <code>&quot;open source&quot;</code> with the larger string, replacing the curly braces in the original string.</p>
+<p>Formatters in Python allow you to use curly braces as placeholders for values that you’ll pass through with the <code>str.format()</code> method.</p>
+</section>
+<section id="using-formatters-with-multiple-placeholders" class="level2">
+<h2>Using Formatters with Multiple Placeholders</h2>
+<p>You can use multiple pairs of curly braces when using formatters. If we’d like to add another variable substitution to the sentence above, we can do so by adding a second pair of curly braces and passing a second value into the method:</p>
+<figure class="code">
+<pre class="python"><code>new_open_string = &quot;Sammy loves {} {}.&quot;                      #2 {} placeholders
+print(new_open_string.format(&quot;open-source&quot;, &quot;software&quot;))    #Pass 2 strings into method, separated by a comma</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy loves open-source software.</code></pre>
+</figure>
+<p>To add another substitution, we added a second pair of curly braces into the original string. Then, we passed two strings into the <code>str.format()</code> method, separating them by a comma.</p>
+<p>Following the same syntax, we can add additional substitutions:</p>
+<figure class="code">
+<pre class="python"><code>sammy_string = &quot;Sammy loves {} {}, and has {} {}.&quot;                      #4 {} placeholders
+print(sammy_string.format(&quot;open-source&quot;, &quot;software&quot;, 5, &quot;balloons&quot;))    #Pass 4 strings into method</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy loves open-source software, and has 5 balloons.</code></pre>
+</figure>
+<p>In <code>sammy_string</code> we added 4 pairs of curly braces as placeholders for variable substitution. We then passed 4 values into the <code>str.format()</code> method, mixing string and integer data types. Each of these values are separated by a comma.</p>
+</section>
+<section id="reordering-formatters-with-positional-and-keyword-arguments" class="level2">
+<h2>Reordering Formatters with Positional and Keyword Arguments</h2>
+<p>When we leave curly braces empty without any parameters, Python will replace the values passed through the <code>str.format()</code> method in order. As we have seen, so far, a formatter construction with two empty curly braces with two values passed through will look like this:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy the {} has a pet {}!&quot;.format(&quot;shark&quot;, &quot;pilot fish&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy the shark has a pet pilot fish!</code></pre>
+</figure>
+<p>The first pair of curly braces is substituted with the string value of <code>&quot;shark&quot;</code>, and the second pair is substituted with the string value of <code>&quot;pilot fish&quot;</code>.</p>
+<p>The values that exist within the method look like this:</p>
+<figure class="code">
+<pre class="python"><code>(&quot;shark&quot;, &quot;pilot fish&quot;)</code></pre>
+</figure>
+<p>They are essentially the <a href="ch025.xhtml">tuple data type</a> and each individual value contained in the tuple can be called by its index number, which starts with the index number 0.</p>
+<p>We can pass these index numbers into the curly braces that serve as the placeholders in the original string:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy the {0} has a pet {1}!&quot;.format(&quot;shark&quot;, &quot;pilot fish&quot;))</code></pre>
+</figure>
+<p>In the above example, the output will be what we get without passing index numbers into the braces as we are calling the values in the tuple in order:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy the shark has a pet pilot fish!</code></pre>
+</figure>
+<p>But, if we reverse the index numbers with the parameters of the placeholders we can reverse the values being passed into the string:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy the {1} has a pet {0}!&quot;.format(&quot;shark&quot;, &quot;pilot fish&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy the pilot fish has a pet shark!</code></pre>
+</figure>
+<p>If you call an index number of 2 in a tuple that has values at index positions 0 and 1, then you are calling on a value that is out of range. When you call an index number that is out of range, you’ll receive an error message:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy the {2} has a pet {1}!&quot;.format(&quot;shark&quot;, &quot;pilot fish&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>IndexError: tuple index out of range</code></pre>
+</figure>
+<p>The error message we see refers to the tuple only having values at index numbers 0 and 1, therefore placing index number 2 out of range.</p>
+<p>Let’s add a few more placeholders and a few more values to pass to them, so we can understand how we can reorder formatters a little better. First, here is a new string with four placeholders:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy is a {}, {}, and {} {}!&quot;.format(&quot;happy&quot;, &quot;smiling&quot;, &quot;blue&quot;, &quot;shark&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy is a happy, smiling and blue shark!</code></pre>
+</figure>
+<p>Without parameters, the values that are passed into the <code>str.format()</code> method are concatenated into the string in order.</p>
+<p>The string values contained in the tuple correspond to the following index numbers:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">“happy”</th>
+<th style="text-align: right;">“smiling”</th>
+<th style="text-align: right;">“blue”</th>
+<th style="text-align: right;">“shark”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s use the index numbers of the values to change the order that they appear in the string:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy is a {3}, {2}, and {1} {0}!&quot;.format(&quot;happy&quot;, &quot;smiling&quot;, &quot;blue&quot;, &quot;shark&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy is a shark, blue, and smiling happy!</code></pre>
+</figure>
+<p>Since we started with index number 3, we called the last value of <code>&quot;shark&quot;</code> first. The other index numbers included as parameters change the order of how the words appear within the original string.</p>
+<p>In addition to positional arguments, we can also introduce keyword arguments that are called by their keyword name:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy the {0} {1} a {pr}.&quot;.format(&quot;shark&quot;, &quot;made&quot;, pr = &quot;pull request&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy the shark made a pull request.</code></pre>
+</figure>
+<p>This example shows the use of a keyword argument being used with positional arguments. We can fill in the keyword argument <code>pr</code> alongside positional arguments, and can move these arguments around to change the resulting string:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy the {pr} {1} a {0}.&quot;.format(&quot;shark&quot;, &quot;made&quot;, pr = &quot;pull request&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy the pull request made a shark.</code></pre>
+</figure>
+<p>Positional and keyword arguments used with string formatters give us more control over manipulating our original strings through reordering.</p>
+</section>
+<section id="specifying-type" class="level2">
+<h2>Specifying Type</h2>
+<p>We can include more parameters within the curly braces of our syntax. We’ll use the format code syntax <code>{field_name:conversion}</code>, where <code>field_name</code> specifies the index number of the argument to the <code>str.format()</code> method that we went through in the <a href="ch018.xhtml#reordering-formatters-with-positional-and-keyword-arguments">reordering section</a>, and <code>conversion</code> refers to the conversion code of the data type that you’re using with the formatter.</p>
+<p>The conversion type refers to the the single-character type code that Python uses. The codes that we’ll be using here are <code>s</code> for string, <code>d</code> to display decimal integers (10-base), and <code>f</code> which we’ll use to display floats with decimal places. You can read more about the <a href="https://docs.python.org/3.6/library/string.html#format-specification-mini-language">Format-Specification Mini-Language</a> through Python 3’s official documentation.</p>
+<p>Let’s look at an example where we have an integer passed through the method, but want to display it as a float by adding the <code>f</code> conversion type argument:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy ate {0:f} percent of a {1}!&quot;.format(75, &quot;pizza&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy ate 75.000000 percent of a pizza!</code></pre>
+</figure>
+<p>We used the syntax of <code>{field_name:conversion}</code> for the first curly brace replacement field to output a float. The second curly braces only uses the first parameter <code>{field_name}</code>.</p>
+<p>In the example above, there are a lot of numbers displaying after the decimal point, but you can limit those. When you are specifying <code>f</code> for float values, you can additionally specify the precision of that value by including a full stop <code>.</code> followed by the number of digits after the decimal you would like to include.</p>
+<p>If Sammy ate 75.765367% of the pizza, but we don’t need to have a high level of accuracy, we can limit the places after the decimal to 3 by adding <code>.3</code> before the conversion type <code>f</code>:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy ate {0:.3f} percent of a pizza!&quot;.format(75.765367))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy ate 75.765 percent of a pizza!</code></pre>
+</figure>
+<p>If we just want one decimal place, we can rewrite the string and method like so:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy ate {0:.1f} percent of a pizza!&quot;.format(75.765367))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy ate 75.8 percent of a pizza!</code></pre>
+</figure>
+<p>Note that modifying precision will cause the number to be rounded.</p>
+<p>Although we display a number with no decimal places as a float, if we try to change the float to an integer by using the <code>d</code> conversion type, we will receive an error:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy ate {0:d} percent of a pizza!&quot;.format(75.765367))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>ValueError: Unknown format code &#39;d&#39; for object of type &#39;float&#39;</code></pre>
+</figure>
+<p>If you would like no decimal places to be shown, you can write your formatter like so:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy ate {0:.0f} percent of a pizza!&quot;.format(75.765367))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy ate 75 percent of a pizza!</code></pre>
+</figure>
+<p>This will not <a href="ch016.xhtml#converting-number-types">convert your float to an integer</a>, but instead limit the number of places shown after the decimal point.</p>
+</section>
+<section id="padding-variable-substitutions" class="level2">
+<h2>Padding Variable Substitutions</h2>
+<p>Because the placeholders are replacement fields, you can <strong>pad</strong> or create space around an element by increasing field size through additional parameters. This can be useful when we need to organize a lot of data visually.</p>
+<p>We can add a number to indicate field size (in terms of characters) after the colon <code>:</code> in the curly braces of our syntax:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy has {0:4} red {1:16}!&quot;.format(5, &quot;balloons&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy has    5 red balloons        !</code></pre>
+</figure>
+<p>In the example above, we gave the number <code>5</code> a character field size of 4, and the string <code>balloons</code> a character field size of 16 (because it is a long string).</p>
+<p>As we see, by default strings are left-justified within the field, and numbers are right-justified. You can modify this by placing an alignment code just following the colon. <code>&lt;</code> will left-align the text in a field, <code>^</code> will center the text in the field, and <code>&gt;</code> will right-align it.</p>
+<p>Let’s left-align the number and center the string:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy has {0:&lt;4} red {1:^16}!&quot;.format(5, &quot;balloons&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy has 5    red     balloons    !</code></pre>
+</figure>
+<p>Now we see that <code>5</code> is left-aligned, providing space in the field before <code>red</code>, and <code>balloons</code> is centered in its field with space to the left and right of it.</p>
+<p>By default, when we make a field larger with formatters, Python will fill the field with whitespace characters. We can modify that to be a different character by specifying the character we want it to be directly following the colon:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;{:*^20s}&quot;.format(&quot;Sammy&quot;))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>*******Sammy********</code></pre>
+</figure>
+<p>We are accepting the string being passed to <code>str.format()</code> in the index position of 0 since we did not specify otherwise, including the colon, and specifying that we will use <code>*</code> instead of space to fill up the field. We’re centering the string with <code>^</code>, specifying that the field is 20 characters in size, and also indicating that we are working with a string conversion type by including <code>s</code>.</p>
+<p>We can combine these parameters with other parameters we’ve used before:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Sammy ate {0:5.0f} percent of a pizza!&quot;.format(75.765367))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy ate    76 percent of a pizza!</code></pre>
+</figure>
+<p>In the parameters within the curly braces, we specified the index field number of the float and included the colon, indicated the size of the field number and included the full stop, wrote in the number of places after the decimal place, and then specified the conversion type of <code>f</code>.</p>
+</section>
+<section id="using-variables" class="level2">
+<h2>Using Variables</h2>
+<p>So far, we have passed integers, floats, and strings into the <code>str.format()</code> method, but we can also pass variables through the method. This works just like any other variable.</p>
+<figure class="code">
+<pre class="python"><code>nBalloons = 8
+print(&quot;Sammy has {} balloons today!&quot;.format(nBalloons))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy has 8 balloons today!</code></pre>
+</figure>
+<p>We can use variables for both the original string and what is passed into the method :</p>
+<figure class="code">
+<pre class="python"><code>sammy = &quot;Sammy has {} balloons today!&quot;
+nBalloons = 8
+print(sammy.format(nBalloons))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Sammy has 8 balloons today!</code></pre>
+</figure>
+<p>Variables can be easily substituted for each part of our formatter syntax construction. This makes it easier to work with when we are taking in user-generated input and assigning those values to variables.</p>
+</section>
+<section id="using-formatters-to-organize-data" class="level2">
+<h2>Using Formatters to Organize Data</h2>
+<p>Formatters can be seen in their best light when they are being used to organize a lot of data in a visual way. If we are showing databases to users, using formatters to increase field size and modify alignment can make your output more readable.</p>
+<p>Let’s look at a typical <a href="ch031.xhtml">for loop</a> in Python that will print out <code>i</code>, <code>i*i</code>, and <code>i*i*i</code> in the range from 3 to 12:</p>
+<figure class="code">
+<pre class="python"><code>for i in range(3,13):
+    print(i, i*i, i*i*i)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>3 9 27
+4 16 64
+5 25 125
+6 36 216
+7 49 343
+8 64 512
+9 81 729
+10 100 1000
+11 121 1331
+12 144 1728</code></pre>
+</figure>
+<p>While the output is organized in a way, the numbers overflow into each other’s columns, making the bottom of the output less readable. If you are working with a bigger data set with many small and big numbers, this can pose a problem.</p>
+<p>Let’s use formatters to give more space to these numbers:</p>
+<figure class="code">
+<pre class="python"><code>for i in range(3,13):
+    print(&quot;{:3d} {:4d} {:5d}&quot;.format(i, i*i, i*i*i))</code></pre>
+</figure>
+<p>Here, in our curly braces, we didn’t add the field name for index number and started with the colon, followed by the number for the field size, and a <code>d</code> conversion type since we’re working with integers. In this example, we accommodated for the size of each expected output, giving 2 extra character spaces for each, depending on the maximum possible number size, so our output looks like this:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>  3    9    27
+  4   16    64
+  5   25   125
+  6   36   216
+  7   49   343
+  8   64   512
+  9   81   729
+ 10  100  1000
+ 11  121  1331
+ 12  144  1728</code></pre>
+</figure>
+<p>We can specify a consistent field size number in order to have even columns, making sure that we accommodate the larger numbers:</p>
+<figure class="code">
+<pre class="python"><code>for i in range(3,13):
+    print(&quot;{:6d} {:6d} {:6d}&quot;.format(i, i*i, i*i*i))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>     3      9     27
+     4     16     64
+     5     25    125
+     6     36    216
+     7     49    343
+     8     64    512
+     9     81    729
+    10    100   1000
+    11    121   1331
+    12    144   1728</code></pre>
+</figure>
+<p>We can also manipulate the alignment of the columns by adding <code>&lt;</code>, <code>^</code>, and <code>&gt;</code> for text alignment, change <code>d</code> to <code>f</code> to add decimal places, change field name index numbers, and more to ensure that we are displaying the data as we would like.</p>
+</section>
+<section id="conclusion-16" class="level2">
+<h2>Conclusion</h2>
+<p>Using formatters for variable substitution can be effective way to concatenate strings and organize values and data. Formatters represent a simple but non-descriptive way for passing variable substitutions into a string, and are useful for making sure output is readable and user friendly.</p>
+</section>
+</section>
+</body>
+</html>
+

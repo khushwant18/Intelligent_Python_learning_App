@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>Built-in Python 3 Functions for Working with Numbers</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="built-in-python-3-functions-for-working-with-numbers" class="level1">
+<h1>Built-in Python 3 Functions for Working with Numbers</h1>
+<p>Python 3 comes with many built-in functions that you can readily use in any program that you’re working on. Some functions enable you to <a href="ch016.xhtml">convert data types</a>, and others are specific to a certain type, like <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-string-methods-in-python-3">strings</a>.</p>
+<p>This tutorial will go through a few of the built-in functions that can be used with numeric data types in Python 3. We’ll go over the following functions: - <code>abs()</code> for absolute value - <code>divmod()</code> to find a quotient and remainder simultaneously - <code>pow()</code> to raise a number to a certain power - <code>round()</code> to round a number to a certain decimal point - <code>sum()</code> to calculate the sum of the items in an iterable data type</p>
+<p>Becoming familiar with these methods can give you more flexibility when programming so that you can make informed decisions when deciding what operators and functions to use. We’ll go through some of these functions with examples throughout this tutorial.</p>
+<section id="absolute-value" class="level3">
+<h3>Absolute Value</h3>
+<p>The built-in function <code>abs()</code> will return the absolute value of a number that you pass to it. In mathematics, <strong>absolute value</strong> refers to the distance that a number is on the number line from 0. Absolute value does not take into consideration which direction from zero the number lies, meaning that negative numbers will be represented with positive numbers.</p>
+<p>To give some examples, the absolute value of <code>15</code> is <code>15</code>, the absolute value of <code>-74</code> is <code>74</code>, and the absolute value of <code>0</code> is <code>0</code>.</p>
+<p>Absolute value is an important concept for calculus and real analysis, but it also makes sense when we think about everyday situations like distance travelled. For example, if we are trying to get somewhere that is 58 miles away but we travel 93 miles instead, we overshot our original destination. If we want to calculate now how many miles left to travel to get to the intended destination, we’ll end up with a negative number, but we can’t travel negative miles.</p>
+<p>Let’s use <code>abs()</code> to solve this problem:</p>
+<figure class="code">
+<figcaption>
+destination_miles.py
+</figcaption>
+<pre class="python"><code>miles_from_origin = 58  # Miles destination is from origin
+miles_travelled = 93    # Miles travelled from origin to destination (too many)
+
+# Calculate how many miles destination is from current location:
+miles_to_go = miles_from_origin - miles_travelled
+
+print(miles_to_go)      # Print how many miles left (a negative number)
+print(abs(miles_to_go)) # Use absolute value to account for negative number</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>-35
+35</code></pre>
+</figure>
+<p>In the output, we see that if we don’t use the <code>abs()</code> function, in this instance we have a negative number, <code>-35</code>. Though we may be in a position where <code>miles_travelled</code> is less than <code>miles_from_origin</code>, including the <code>abs()</code> function takes the possibility of a negative number into account.</p>
+<p>With a negative number, <code>abs()</code> will return a positive number as absolute values are always positive numbers or zero.</p>
+<p>Let’s go through using <code>abs()</code> with a positive number and zero:</p>
+<figure class="code">
+<pre class="python"><code>print(abs(89.9))
+print(abs(0))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>89.9
+0</code></pre>
+</figure>
+<p>We’re most likely to use <code>abs()</code> with a variable that may be positive or negative in an instance when we are looking only for a positive number. To account for a negative input or result, we’ll use <code>abs()</code> to modify what is returned to be a positive number.</p>
+</section>
+<section id="finding-the-quotient-and-remainder-in-one-function" class="level3">
+<h3>Finding the Quotient and Remainder in One Function</h3>
+<p>Because both floor division (which returns a quotient), and modulo division (which returns a remainder), are closely related, it can be useful to use a function that combines both operations at once.</p>
+<p>The Python built-in function <code>divmod()</code> combines the two, returning first the quotient that comes from floor division, then the remainder.</p>
+<p>Because <code>divmod()</code> will be working with two numbers, we need to pass two numbers to it.</p>
+<figure class="code">
+<pre class="python"><code>divmod(a,b)</code></pre>
+</figure>
+<p>With this function we are basically performing the following:</p>
+<figure class="code">
+<pre class="python"><code>a // b
+a &amp; b</code></pre>
+</figure>
+<p>Let’s say we have written a book that is 80,000 words long. With our publisher, we have the option of either 300 or 250 words per page, and we’d like to get a sense of how many pages we would have in each case. With <code>divmod()</code> we can see immediately how many pages we would have, and how many words would be spilled over onto an additional page.</p>
+<figure class="code">
+<figcaption>
+words_per_page.py
+</figcaption>
+<pre class="python"><code>words = 80000       # How many words in our book
+per_page_A = 300    # Option A, 300 words per page
+per_page_B = 250    # Option B, 25- words per page
+
+print(divmod(words,per_page_A)) # Calculate Option A
+print(divmod(words,per_page_B)) # Calculate Option B</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>(266, 200)
+(320, 0)</code></pre>
+</figure>
+<p>In Option A, we will have 266 pages filled with words and 200 words left over (⅔ of a page) for a total of 267 pages, and in Option B we’ll have an even 320-page book. If we want to be environmentally-conscious, we can choose Option A, but if we want to look more impressive with a bigger-sized book we may choose Option B.</p>
+<p>Because the function <code>divmod()</code> can take both integers and floats, let’s also go through an example that uses floats:</p>
+<figure class="code">
+<pre class="python"><code>a = 985.5
+b = 115.25
+
+print(divmod(a,b))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>(8.0, 63.5)</code></pre>
+</figure>
+<p>In this example, <code>8.0</code> is the floor quotient of 985.5 divided by 115.25, and <code>63.5</code> is the remainder.</p>
+<p>Keep in mind that you can use the floor division operator <code>//</code> and the modulo operator <code>%</code> to verify what <code>divmod()</code> did:</p>
+<figure class="code">
+<pre class="python"><code>print(a//b)
+print(a%b)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre class="python"><code>8.0
+63.5</code></pre>
+</figure>
+<p>When using the <code>divmod()</code> function in Python. we get both the whole number of times the division occurs and the remainder returned.</p>
+</section>
+<section id="power-1" class="level2">
+<h2>Power</h2>
+<p>In Python, you can use <a href="ch019.xhtml#power">the operator</a> <code>**</code> to raise a number by an exponent, or you can use the built-in function <code>pow()</code> which takes in two numbers.</p>
+<p>To see how the <code>pow()</code> function works, let’s say we are doing research on bacteria and want to see how many bacteria we’ll have at the end of the day if we start with 1. The particular bacteria we’re working with doubles each hour, so we’ll be calculating 2 (doubling) to the power of the total number of hours (24 in our case).</p>
+<figure class="code">
+<figcaption>
+bacteria.py
+</figcaption>
+<pre class="python"><code>hours = 24
+total_bacteria = pow(2,hours)
+
+print(total_bacteria)</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>16777216</code></pre>
+</figure>
+<p>We passed two integers to the <code>pow()</code> function and determined that by the end of this 24-hour period, we’ll have over 16 million bacteria.</p>
+<p>In mathematics, if we want to calculate 3 to the power of 3, it is generally written like this:</p>
+<p>3³</p>
+<p>The computation that we are completing is 3 x 3 x 3, which is equal to 27.</p>
+<p>To calculate 3³ in Python, we would type out <code>pow(3,3)</code>.</p>
+<p>The function <code>pow()</code> will take both integers and floats, and provides an alternative to using the <code>**</code> operator when you intend to raise numbers to a certain power.</p>
+</section>
+<section id="rounding-numbers" class="level2">
+<h2>Rounding Numbers</h2>
+<p>Being able to quickly and readily round numbers becomes important when working with floats that have a lot of decimal places. The built-in Python function <code>round()</code> takes in two numbers, one to be rounded, and one that specifies the number of decimal places to include.</p>
+<p>We’ll use the function to take a float with more than 10 decimal places and use the <code>round()</code> function to reduce decimal places to 4:</p>
+<figure class="code">
+<pre class="python"><code>i = 17.34989436516001
+print(round(i,4))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>17.3499</code></pre>
+</figure>
+<p>In the example above, the float <code>17.34989436516001</code> is rounded to <code>17.3499</code> because we have specified that the number of decimal places should be limited to 4.</p>
+<p>Note also that the <code>round()</code> function rounds numbers up, so instead of providing <code>17.3498</code> as the output, it has provided <code>17.3499</code> because the number following the decimal number 8 is the number 9. Any number that is followed by the number 5 or greater will be rounded up to the next whole number.</p>
+<p>Let’s break down the syntax for <code>round()</code>:</p>
+<figure class="code">
+<pre><code>round(<span class="highlight">number to round</span>,<span class="highlight">number of decimal places</span>)</code></pre>
+</figure>
+<p>In everyday life, rounding numbers happens often, especially when working with money; we can’t split up a penny evenly among several friends.</p>
+<p>Let’s go through an example of a simple program that can calculate a tip. Here we’ll provide figures, but we could rewrite the program to bring in user-provided numbers instead. In this example, 3 friends went to a restaurant who want to split a bill of $87.93 evenly, along with adding a 20% tip.</p>
+<figure class="code">
+<figcaption>
+bill_split.py
+</figcaption>
+<pre class="python"><code>bill = 87.93                # Total bill
+tip = 0.2                   # 20% tip
+split = 3                   # Number of people splitting the bill
+
+total = bill + (bill * tip) # Calculate the total bill
+
+each_pay = total / split    # Calculate what each person pays
+
+print(each_pay)             # What each person pays before rounded
+
+print(round(each_pay,2))    # Round the number — we can’t split pennies</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>35.172000000000004
+35.17</code></pre>
+</figure>
+<p>In this program, we ask first for output of the number after we calculate the total bill plus tip divided by 3, which evaluates to a number with a lot of decimal places: <code>35.172000000000004</code>. Since this number doesn’t make sense as a monetary figure, we use the <code>round()</code> function and limit the decimal places to 2, so that we can provide an output that the 3 friends can actually work with: <code>35.17</code>.</p>
+<p>If you would prefer to round to a number with only 0 as a decimal value, you can do so by using 0 as the second parameter in the <code>round()</code> function:</p>
+<figure class="code">
+<pre class="python"><code>round(345.9874590348545304636,0)</code></pre>
+</figure>
+<p>This would evaluate to <code>346.0</code>.</p>
+<p>You can also pass integers into <code>round()</code> without receiving an error, in case you receive user input in the form of an integer rather than a float. When an integer is passed as the first parameter, an integer will be returned.</p>
+</section>
+<section id="calculating-a-sum" class="level2">
+<h2>Calculating a Sum</h2>
+<p>The <code>sum()</code> function is used for calculating sums of numeric compound data types, including <a href="ch022.xhtml">lists</a>, <a href="ch025.xhtml">tuples</a>, and <a href="ch026.xhtml">dictionaries</a>.</p>
+<p>We can pass a list to the <code>sum()</code> function to add all the items in the list together in order from left to right:</p>
+<figure class="code">
+<pre class="python"><code>some_floats = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9]
+print(sum(some_floats))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>49.5</code></pre>
+</figure>
+<p>This will work similarly with tuples and dictionaries:</p>
+<figure class="code">
+<pre class="python"><code>print(sum((8,16,64,512)))   # Calculate sum of numbers in tuple
+print(sum({-10: &#39;x&#39;, -20: &#39;y&#39;, -30: &#39;z&#39;}))  # Calculate sum of numbers in dictionary</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>600 # Sum of numbers in tuple
+-60 # Sum of numbers in dictionary</code></pre>
+</figure>
+<p>The <code>sum()</code> function can take up to 2 arguments, so you can add an additional number in integer or float form to add to the numbers that make up the argument in the first position:</p>
+<figure class="code">
+<pre class="python"><code>some_floats = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9]
+
+print(sum(some_floats, 0.5))
+print(sum({-10: &#39;x&#39;, -20: &#39;y&#39;, -30: &#39;z&#39;},60))</code></pre>
+</figure>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>50.0
+0</code></pre>
+</figure>
+<p>When you don’t include a second argument, the <code>sum()</code> function defaults to adding 0 to the iterable compound data type.</p>
+</section>
+<section id="conclusion-18" class="level2">
+<h2>Conclusion</h2>
+<p>This tutorial covered some built-in methods that you can use with numeric data types in the Python programming language.</p>
+<p>To learn more about working with numbers, you can read “<a href="ch019.xhtml">How To Do Math in Python 3 with Operators</a>”, and to learn more about lists, take a look at “<a href="ch022.xhtml">Understanding Lists in Python 3</a>.”</p>
+</section>
+</section>
+</body>
+</html>
+

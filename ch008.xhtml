@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Write Your First Python 3 Program</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-write-your-first-python-3-program" class="level1">
+<h1>How To Write Your First Python 3 Program</h1>
+<p>The “Hello, World!” program is a classic and time-honored tradition in computer programming. Serving as a simple and complete first program for beginners, as well as a good program to test systems and programming environments, “Hello, World!” illustrates the basic syntax of programming languages.</p>
+<p>This tutorial will walk you through writing a “Hello, World” program in Python 3.</p>
+<section id="prerequisites-5" class="level2">
+<h2>Prerequisites</h2>
+<p>You should have <a href="https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3">Python 3 installed</a> as well as a local programming environment set up on your computer.</p>
+<p>If you don’t have one set up, you can use one of the installation and setup guides below that is appropriate for your operating system:</p>
+<ul>
+<li><a href="ch003.xhtml">Ubuntu 16.04 or Debian 8</a></li>
+<li><a href="ch006.xhtml">CentOS 7</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-mac-os-x">Mac OS X</a></li>
+<li><a href="ch005.xhtml">Windows 10</a></li>
+</ul>
+</section>
+<section id="writing-the-hello-world-program" class="level2">
+<h2>Writing the “Hello, World!” Program</h2>
+<p>To write the “Hello, World!” program, let’s open up a command-line text editor such as nano and create a new file:</p>
+<figure class="code">
+<pre class="command"><code>nano hello.py</code></pre>
+</figure>
+<p>Once the text file opens up in the terminal window we’ll type out our program:</p>
+<figure class="code">
+<figcaption>
+hello.py
+</figcaption>
+<pre><code>print(&quot;Hello, World!&quot;)</code></pre>
+</figure>
+<p>Let’s break down the different components of the code.</p>
+<p><code>print()</code> is a <strong>function</strong> that tells the computer to perform an action. We know it is a function because it uses parentheses. <code>print()</code> tells Python to display or output whatever we put in the parentheses. By default, this will output to the current terminal window.</p>
+<p>Some functions, like the <code>print()</code> function, are built-in functions included in Python by default. These built-in functions are always available for us to use in programs that we create. We can also <a href="ch033.xhtml">define our own functions</a> that we construct ourselves through other elements.</p>
+<p>Inside the parentheses of the <code>print()</code> function is a sequence of characters — <code>Hello, World!</code> — that is enclosed in quotation marks. Any characters that are inside of quotation marks are called a <strong><a href="https://www.digitalocean.com/community/tutorial_series/working-with-strings-in-python-3">string</a></strong>.</p>
+<p>Once we are done writing our program, we can exit nano by typing the <code>control</code> and <code>x</code> keys, and when prompted to save the file press <code>y</code>.</p>
+<p>Once you exit out of nano you’ll return to your shell.</p>
+</section>
+<section id="running-the-hello-world-program" class="level2">
+<h2>Running the “Hello, World!” Program</h2>
+<p>With our “Hello, World!” program written, we are ready to run the program. We’ll use the <code>python3</code> command along with the name of our program file. Let’s run the program:</p>
+<figure class="code">
+<pre class="command"><code>python3 hello.py</code></pre>
+</figure>
+<p>The hello.py program that you just created will cause your terminal to produce the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Hello, World!</code></pre>
+</figure>
+<p>Let’s go over what the program did in more detail.</p>
+<p>Python executed the line <code>print(&quot;Hello, World!&quot;)</code> by <em>calling</em> the <code>print()</code> function. The string value of <code>Hello, World!</code> was <em>passed</em> to the function.</p>
+<p>In this example, the string <code>Hello, World!</code> is also called an <strong>argument</strong> since it is a value that is passed to a function.</p>
+<p>The quotes that are on either side of <code>Hello, World!</code> were not printed to the screen because they are used to tell Python that they contain a string. The quotation marks delineate where the string begins and ends.</p>
+<p>Since the program ran, you can now confirm that Python 3 is properly installed and that the program is syntactically correct.</p>
+</section>
+<section id="conclusion-6" class="level2">
+<h2>Conclusion</h2>
+<p>Congratulations! You have written the “Hello, World!” program in Python 3.</p>
+<p>From here, you can continue to work with the <code>print()</code> function by writing your own strings to display, and can also create new program files.</p>
+<p>Keep learning about programming in Python by reading our full tutorial series <a href="https://www.digitalocean.com/community/tutorial_series/how-to-code-in-python-3">How To Code in Python 3</a>.</p>
+</section>
+</section>
+</body>
+</html>
+

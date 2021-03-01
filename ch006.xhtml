@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>How To Install Python 3 and Set Up a Local Programming Environment on CentOS 7</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body>
+<section id="how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7" class="level1">
+<h1>How To Install Python 3 and Set Up a Local Programming Environment on CentOS 7</h1>
+<p>Python is a versatile programming language that can be used for many different programming projects. First published in 1991 with a name inspired by the British comedy group Monty Python, the development team wanted to make Python a language that was fun to use. Easy to set up, and written in a relatively straightforward style with immediate feedback on errors, Python is a great choice for beginners and experienced developers alike. Python 3 is the most current version of the language and is considered to be the future of Python.</p>
+<p>This tutorial will guide you through installing Python 3 on your local CentOS 7 machine and setting up a programming environment via the command line.</p>
+<section id="prerequisites-3" class="level2">
+<h2>Prerequisites</h2>
+<p>You will need a CentOS 7 computer with a non-root superuser account that is connected to the internet.</p>
+</section>
+<section id="step-1-preparing-the-system" class="level2">
+<h2>Step 1 — Preparing the System</h2>
+<p>We will be completing this installation through the command line. If your CentOS 7 computer starts up with a Graphical User Interface (GUI) desktop, you can gain access to the command line interface through the Menu, by navigating to Applications, then Utilities, and then clicking on Terminal. If you need more guidance on the terminal, be sure to read through the article “<a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal">An Introduction to the Linux Terminal</a>.”</p>
+<p>Before we begin with the installation, let’s make sure to update the default system applications to have the latest versions available.</p>
+<p>We will be using the open-source package manager tool <strong>yum</strong>, which stands for Yellowdog Updater Modified. This is a commonly used tool for working with software packages on Red Hat based Linux systems like CentOS. It will let you easily install and update, as well as remove software packages on your computer.</p>
+<p>Let’s first make sure that yum is up to date by running this command:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y update</code></pre>
+</figure>
+<p>The <code>-y</code> flag is used to alert the system that we are aware that we are making changes, preventing the terminal from prompting us to confirm.</p>
+<p>Next, we will install <strong>yum-utils</strong>, a collection of utilities and plugins that extend and supplement yum:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y install yum-utils</code></pre>
+</figure>
+<p>Finally, we’ll install the CentOS Development Tools, which are used to allow you to build and compile software from source code:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y groupinstall development</code></pre>
+</figure>
+<p>Once everything is installed, our setup is in place and we can go on to install Python 3.</p>
+</section>
+<section id="step-2-installing-and-setting-up-python-3" class="level2">
+<h2>Step 2 — Installing and Setting Up Python 3</h2>
+<p>CentOS is derived from RHEL (Red Hat Enterprise Linux), which has stability as its primary focus. Because of this, tested and stable versions of applications are what is most commonly found on the system and in downloadable packages, so on CentOS you will only find Python 2.</p>
+<p>Since instead we would like to install the most current upstream stable release of Python 3, we will need to install <strong>IUS</strong>, which stands for Inline with Upstream Stable. A community project, IUS provides Red Hat Package Manager (RPM) packages for some newer versions of select software.</p>
+<p>To install IUS, let’s install it through <code>yum</code>:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm</code></pre>
+</figure>
+<p>Once IUS is finished installing, we can install the most recent version of Python:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y install python36u</code></pre>
+</figure>
+<p>When the installation process of Python is complete, we can check to make sure that the installation was successful by checking for its version number with the <code>python3.6</code> command:</p>
+<figure class="code">
+<pre class="command"><code>python3.6 -V</code></pre>
+</figure>
+<p>With a version of Python 3.6 successfully installed, we will receive the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Python <span class="highlight">3.6.1</span></code></pre>
+</figure>
+<p>We will next install <strong>pip</strong>, which will manage software packages for Python:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y install python36u-pip</code></pre>
+</figure>
+<p>A tool for use with Python, we will use <strong>pip</strong> to install and manage programming packages we may want to use in our development projects. You can install Python packages by typing:</p>
+<figure class="code">
+<pre class="command"><code>sudo pip3.6 install <span class="highlight">package_name</span></code></pre>
+</figure>
+<p>Here, <code><span class="highlight">package_name</span></code> can refer to any Python package or library, such as Django for web development or NumPy for scientific computing. So if you would like to install NumPy, you can do so with the command <code>pip3.6 install numpy</code>.</p>
+<p>Finally, we will need to install the IUS package <strong>python36u-devel</strong>, which provides us with libraries and header files we will need for Python 3 development:</p>
+<figure class="code">
+<pre class="command"><code>sudo yum -y install python36u-devel</code></pre>
+</figure>
+<p>The <strong>venv</strong> module will be used to set up a virtual environment for our development projects in the next step.</p>
+</section>
+<section id="step-3-setting-up-a-virtual-environment" class="level2">
+<h2>Step 3 — Setting Up a Virtual Environment</h2>
+<p>Now that we have Python installed and our system set up, we can go on to create our programming environment with venv.</p>
+<p>Virtual environments enable you to have an isolated space on your computer for Python projects, ensuring that each of your projects can have its own set of dependencies that won’t disrupt any of your other projects.</p>
+<p>Setting up a programming environment provides us with greater control over our Python projects and over how different versions of packages are handled. This is especially important when working with third-party packages.</p>
+<p>You can set up as many Python programming environments as you want. Each environment is basically a directory or folder in your computer that has a few scripts in it to make it act as an environment.</p>
+<p>Choose which directory you would like to put your Python programming environments in, or create a new directory with <code>mkdir</code>, as in:</p>
+<figure class="code">
+<pre class="command"><code>mkdir <span class="highlight">environments</span>
+cd <span class="highlight">environments</span></code></pre>
+</figure>
+<p>Once you are in the directory where you would like the environments to live, you can create an environment by running the following command:</p>
+<figure class="code">
+<pre class="command"><code>python3.6 -m venv <span class="highlight">my_env</span></code></pre>
+</figure>
+<p>Essentially, this command creates a new directory (in this case called <span class="highlight">my_env</span>) that contains a few items that we can see with the <code>ls</code> command:</p>
+<figure class="code">
+<pre><code>bin include lib lib64 pyvenv.cfg</code></pre>
+</figure>
+<p>Together, these files work to make sure that your projects are isolated from the broader context of your local machine, so that system files and project files don’t mix. This is good practice for version control and to ensure that each of your projects has access to the particular packages that it needs.</p>
+<p>To use this environment, you need to activate it, which you can do by typing the following command that calls the <strong>activate</strong> script in the <code>bin</code> directory:</p>
+<figure class="code">
+<pre class="command"><code>source <span class="highlight">my_env</span>/bin/activate</code></pre>
+</figure>
+<p>Your prompt will now be prefixed with the name of your environment, in this case it is called <span class="highlight">my_env</span>:</p>
+<figure class="code">
+<pre><code>(my_env) [sammy@localhost] environments]$</code></pre>
+</figure>
+<p>This prefix lets us know that the environment <span class="highlight">my_env</span> is currently active, meaning that when we create programs here they will use only this particular environment’s settings and packages.</p>
+<div class="note">
+<p><strong>Note:</strong> Within the virtual environment, you can use the command <code>python</code> instead of <code>python3.6</code>, and <code>pip</code> instead of <code>pip3.6</code> if you would prefer. If you use Python 3 on your machine outside of an environment, you will need to use the <code>python3.6</code> and <code>pip3.6</code> commands exclusively.</p>
+</div>
+<p>After following these steps, your virtual environment is ready to use.</p>
+</section>
+<section id="step-4-creating-a-simple-program" class="level2">
+<h2>Step 4 — Creating a Simple Program</h2>
+<p>Now that we have our virtual environment set up, let’s create a simple “Hello, World!” program. This will make sure that our environment is working and gives us the opportunity to become more familiar with Python if we aren’t already.</p>
+<p>To do this, we’ll open up a command-line text editor such as <strong>vim</strong> and create a new file:</p>
+<figure class="code">
+<pre><code>(my_env) [sammy@localhost] environments]$ vi hello.py</code></pre>
+</figure>
+<p>Once the text file opens up in our terminal window, we will have to type <code>i</code> to enter insert mode, and then we can write our first program:</p>
+<figure class="code">
+<pre class="python"><code>print(&quot;Hello, World!&quot;)</code></pre>
+</figure>
+<p>Now press <code>ESC</code> to leave insert mode. Next, type <code>:x</code> then <code>ENTER</code> to save and exit the file.</p>
+<p>We are now ready to run our program:</p>
+<figure class="code">
+<pre><code>(my_env) [sammy@localhost] environments]$ python hello.py</code></pre>
+</figure>
+<p>The hello.py program that you just created should cause the terminal to produce the following output:</p>
+<figure class="code">
+<figcaption>
+Output
+</figcaption>
+<pre><code>Hello, World!</code></pre>
+</figure>
+<p>To leave the environment, simply type the command <code>deactivate</code> and you’ll return to your original directory.</p>
+</section>
+<section id="conclusion-4" class="level2">
+<h2>Conclusion</h2>
+<p>Congratulations! At this point you have a Python 3 programming environment set up on your local CentOS 7 machine and can begin a coding project!</p>
+<p>To set up Python 3 on another computer, follow the <a href="https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3">local programming environment guides</a> for <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-in-ubuntu-16-04">Ubuntu 16.04</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-debian-8">Debian 8</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-mac-os-x">macOS</a>, or <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-local-programming-environment-for-python-3-on-windows-10">Windows 10</a>. You can also read about <a href="ch007.xhtml">installing Python and setting up a programming environment on an Ubuntu 16.04 server</a>, which is especially useful when working on development teams.</p>
+<p>With your local machine ready for software development, you can continue to learn more about coding in Python by following “<a href="ch011.xhtml">Understanding Data Types in Python 3</a>” and “<a href="ch017.xhtml">How To Use Variables in Python 3</a>”.</p>
+</section>
+</section>
+</body>
+</html>
+
