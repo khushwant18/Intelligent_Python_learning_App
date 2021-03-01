@@ -21,6 +21,66 @@
 1. Select answers and submit to evaluate your score 
 2. close the popup evaluation screen to view the answers and explanation
 
+### App Screenshots
+App Data Flow is staged into 5 steps:
+1. User Validation: Screen design comprises of single box layout with Text field inputs and sign in button widget. Screen is designed to provide the user an interface to store and validate its credentials
+2. Text Book selection: Screen design is divided into grid layout, to display available text resources for selection and link to take test. For image selection, Image button class is made by inheriting Image and Button class
+3. Book Summarization: Page Layout is used on this screen to get text summary in book style view, to easily swipe pages back and forth.
+4. Question Bank/Test: Screen comprises of box layout view split in half to display questions and answer selection for radio box.
+5. Performance Evaluation: Screen comprises of two display windows, one for user graph and another for explanation of answers
+
+<table class="Box border-top-0">
+  .border-top-0
+  <tr>
+<td align="center">
+  <figure>
+    <img src="Fig1.png" width=80%>
+    <br>
+    <figcaption>Fig. 1. Validation Screen</figcaption>
+   </figure>
+ </td>
+  <td align="center">
+    <figure>
+    <img src="Fig2.png" width=80%>
+    <br>
+    <figcaption>Fig. 2. Resource Selection</figcaption>
+   </figure>
+  </td>
+  <td align="center">
+    <figure>
+    <img src="Fig3.png" width=80%>
+    <br>
+    <figcaption>Fig. 3. Summarized Book</figcaption>
+   </figure>
+  </td>
+  </tr>
+  <tr>
+<td align="center">
+    <figure>
+    <img src="Fig4.png" width=80%>
+    <br>
+    <figcaption>Fig. 4. Interactive questions</figcaption>
+   </figure>
+ </td>
+  <td align="center">
+    <figure>
+    <img src="Fig5.png" width=80%>
+    <br>
+    <figcaption>Fig. 5. User Evaluation</figcaption>
+   </figure>
+  </td>
+  <td align="center">
+    <figure>
+    <img src="Fig6.png" width=80%>
+    <br>
+    <figcaption>Fig. 6. Answers and explanation</figcaption>
+   </figure>
+  </td>
+    </tr>
+</table>
+
+
+
 ### Software and Libraries required
 Intelligent Python Learning App uses a number of open source projects to work properly:
 
