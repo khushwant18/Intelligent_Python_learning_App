@@ -29,8 +29,7 @@ App Data Flow is staged into 5 steps:
 4. Question Bank/Test: Screen comprises of box layout view split in half to display questions and answer selection for radio box.
 5. Performance Evaluation: Screen comprises of two display windows, one for user graph and another for explanation of answers
 
-<table class="Box border-top-0">
-  .border-top-0
+<table>
   <tr>
 <td align="center">
   <figure>
